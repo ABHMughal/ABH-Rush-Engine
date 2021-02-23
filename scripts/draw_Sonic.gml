@@ -354,7 +354,7 @@ if action == 10
 }
 
 //grinding
-if action == 11 && collision_line(x,y,x+25*asin,y+25*acos,obj_rail,true,true) && ground
+if action == 11 && ground // && collision_line(x,y,x+25*asin,y+25*acos,obj_rail,true,true)
 {
     if abs(hsp) < 8.5
         sprp = spr_Sonic_grind
