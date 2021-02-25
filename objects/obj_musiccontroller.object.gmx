@@ -53,8 +53,8 @@ if room == rm_curienmansion
     intro_length = 5
     loop_length = 158.07 - intro_length
 }
-
-if room == rm_hotcrater
+// TODO : makes the game crash, activate when the resources are imported
+/*if room == rm_hotcrater
 {
     if !audio_is_playing(bgm_hotcrater)
         bgm = audio_play_sound(bgm_hotcrater,0,false)
@@ -62,7 +62,7 @@ if room == rm_hotcrater
         bgm = bgm_hotcrater
     intro_length = 12.12
     loop_length = 68.05 - intro_length
-}
+}*/
 
 total_length = intro_length + loop_length
 </string>
@@ -110,11 +110,12 @@ else if room == rm_curienmansion
     intro_length = 5
     loop_length = 158.07 - intro_length
 }
-else if room == rm_hotcrater
+// TODO : makes the game crash, activate when the resources are imported
+/*else if room == rm_hotcrater
 {
     intro_length = 12.12
     loop_length = 68.05 - intro_length
-}
+}*/
 </string>
           </argument>
         </arguments>

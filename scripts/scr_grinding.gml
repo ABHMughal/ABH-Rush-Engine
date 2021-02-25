@@ -1,11 +1,13 @@
 //grinding
+
+var _radius = 8;
+
 if vsp >= 0
     canGrind = true
 else
     canGrind = false
 
-
-if canGrind && ground && collision_line(x,y,x+20*asin,y+20*acos,obj_rail,true,true)  //collision_point(x+16*asin,y+16*acos,obj_rail,true,true)
+if canGrind && ground && collision_circle(x+asin*mask,y+acos*mask,_radius,obj_rail,true,true) // collision_line(x,y,x+20*asin,y+20*acos,obj_rail,true,true)
 {
     if action == 2
         action = 0
@@ -34,7 +36,7 @@ if action == 11
     if instance_exists(obj_boostfx)
         hsp = hspl*xdir
     hsp += -asin*(dcc/6)
-    if !ground  || !collision_line(x,y,x+20*asin,y+20*acos,obj_rail,true,true)   
+    if !ground  || !collision_circle(x+asin*mask,y+acos*mask,_radius,obj_rail,true,true) // !collision_line(x,y,x+20*asin,y+20*acos,obj_rail,true,true)   
         action = 0
 }
 if action != 11 && action != 32 && action != 32.5 && audio_is_playing(snd_grinding)
