@@ -133,10 +133,10 @@ global.enemies += 100
             <kind>1</kind>
             <string>if other.sprp == spr_Shadow_spinjump &amp;&amp; !other.ground &amp;&amp; !instance_exists(obj_boostfx)
 {
-    if other.action == 4
+    if other.action == consPlayerActionHomingTarget
     {
         other.image_i = 2
-        other.action = 10
+        other.action = consPlayerActionTrick
         other.sprp = spr_Shadow_jump // choose(spr_Sonic_trick1,spr_Sonic_trick2,spr_Sonic_trick3)
         canHit = false
         hspeed = other.xdir*other.hspeed*cos(degtorad(point_direction(obj_Sonic.x,obj_Sonic.y,x,y)))*0.5
@@ -160,7 +160,7 @@ global.enemies += 100
     }
     audio_play_sound(choose(snd_enemy_hit1,snd_enemy_hit2,snd_enemy_hit3),1,false)
 }
-else if instance_exists(obj_boostfx) ||  other.action == 9 
+else if instance_exists(obj_boostfx) ||  other.action == consPlayerActionSlide 
 {
 
     if canHit
@@ -184,7 +184,7 @@ else if instance_exists(obj_boostfx) ||  other.action == 9
     }
     
 }
-else if other.action == 2 || other.action == 18
+else if other.action == consPlayerActionRoll || other.action == consPlayerActionStomp
 {
     instance_destroy()
 }
@@ -194,7 +194,7 @@ else if canHit &amp;&amp; other.canHit
     {
         other.image_i = 0
         other.ground = false
-        other.action = 22
+        other.action = consPlayerActionDamaged
         other.vsp = -4
         other.hsp = -5*other.xdir
         other.canHit = false
@@ -205,7 +205,7 @@ else if canHit &amp;&amp; other.canHit
     {
         other.image_i = 0
         other.ground = false
-        other.action = 26
+        other.action = consPlayerActionDead
         other.vsp = -4
         other.hsp = -5*other.xdir
         other.canHit = false
@@ -236,11 +236,11 @@ vibrate_xbox_controller(10)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (other.action == 1 || other.action == 2 || other.action == -2 || other.action == 13 || other.action == 9)
+            <string>if (other.action == consPlayerActionJump || other.action == consPlayerActionRoll || other.action == consPlayerActionSpindashCharge || other.action == consPlayerActionSwingBarJump || other.action == consPlayerActionSlide)
 {
     canHit = false
     
-    if other.action == 1
+    if other.action == consPlayerActionJump
     {
         other.vsp = -other.vsp;
     }
@@ -272,12 +272,12 @@ else if canHit &amp;&amp; other.canHit &amp;&amp; !other.super
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (other.action == 1 || other.action == -2 || other.action == 4 || other.action == 4.5 || other.action == 13 ) &amp;&amp; !other.ground &amp;&amp; !instance_exists(obj_boostfx) //((other.character == "Sonic" &amp;&amp; (other.sprp == spr_Sonic_spinjump || other.sprp == spr_SuperSonic_spinjump || other.sprp == spr_Sonic_land || other.sprp == spr_SuperSonic_land)) || (other.character == "Shadow" &amp;&amp; (other.sprp == spr_Shadow_spinjump || other.sprp == spr_SuperShadow_spinjump || other.sprp == spr_Shadow_land || other.sprp == spr_SuperShadow_land))) 
+            <string>if (other.action == consPlayerActionJump || other.action == consPlayerActionSpindashCharge || other.action == consPlayerActionHomingTarget || other.action == consPlayerActionHomingNoTarget || other.action == consPlayerActionSwingBarJump ) &amp;&amp; !other.ground &amp;&amp; !instance_exists(obj_boostfx) //((other.character == "Sonic" &amp;&amp; (other.sprp == spr_Sonic_spinjump || other.sprp == spr_SuperSonic_spinjump || other.sprp == spr_Sonic_land || other.sprp == spr_SuperSonic_land)) || (other.character == "Shadow" &amp;&amp; (other.sprp == spr_Shadow_spinjump || other.sprp == spr_SuperShadow_spinjump || other.sprp == spr_Shadow_land || other.sprp == spr_SuperShadow_land))) 
 {
-    if other.action == 4
+    if other.action == consPlayerActionHomingTarget
     {
         other.image_i = 0
-        other.action = 10
+        other.action = consPlayerActionTrick
         
         if other.character == "Sonic"
         {
@@ -323,7 +323,7 @@ else if canHit &amp;&amp; other.canHit &amp;&amp; !other.super
     }
     audio_play_sound(choose(snd_enemy_hit1,snd_enemy_hit2,snd_enemy_hit3),1,false)
 }
-else if instance_exists(obj_boostfx) ||  other.action == 9 
+else if instance_exists(obj_boostfx) ||  other.action == consPlayerActionSlide 
 {
 
     if canHit
@@ -348,7 +348,7 @@ else if instance_exists(obj_boostfx) ||  other.action == 9
     }
     
 }
-else if other.action == 2 || other.action == 18
+else if other.action == consPlayerActionRoll || other.action == consPlayerActionStomp
 {
     instance_destroy()
 }
@@ -360,7 +360,7 @@ else if canHit &amp;&amp; other.canHit &amp;&amp; !other.super
     {
         other.image_i = 0
         other.ground = false
-        other.action = 22
+        other.action = consPlayerActionDamaged
         other.vsp = -4
         other.hsp = -5*other.xdir
         other.canHit = false
@@ -371,7 +371,7 @@ else if canHit &amp;&amp; other.canHit &amp;&amp; !other.super
     {
         other.image_i = 0
         other.ground = false
-        other.action = 26
+        other.action = consPlayerActionDead
         other.vsp = -4
         other.hsp = -5*other.xdir
         other.canHit = false

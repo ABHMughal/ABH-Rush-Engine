@@ -1,6 +1,6 @@
 //auto-tunnel movement
 
-if action == 34
+if action == consPlayerActionAutoTunnel
 {
     hsp = 12
     ground = true

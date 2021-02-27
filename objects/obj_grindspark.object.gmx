@@ -52,7 +52,7 @@
 y = obj_Sonic.y
 image_angle = obj_Sonic.angle
 image_xscale = obj_Sonic.xdir
-if obj_Sonic.action != 11
+if obj_Sonic.action != consPlayerActionGrinding
     instance_destroy()
 </string>
           </argument>

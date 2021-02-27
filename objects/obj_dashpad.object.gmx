@@ -73,11 +73,11 @@ activate = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if activate &amp;&amp; other.action != 26
+            <string>if activate &amp;&amp; other.action != consPlayerActionDead
 {
     other.hsp = image_xscale*other.hspl
     other.xdir = image_xscale;
-    other.action = 8
+    other.action = consPlayerActionDashPad
     other.alarm1 = 20
     other.ground = true
     activate = false

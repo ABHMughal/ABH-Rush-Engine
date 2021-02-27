@@ -1124,14 +1124,58 @@
   <rooms name="rooms">
     <room>rooms\displaymanage</room>
     <room>rooms\initialize</room>
+    <room>rooms\rm_curienmansion</room>
+    <room>rooms\rm_planetwisp</room>
     <room>rooms\rm_testzone</room>
     <room>rooms\rm_title</room>
-    <room>rooms\rm_curienmansion</room>
     <room>rooms\rm_ending_screen</room>
-    <room>rooms\rm_planetwisp</room>
     <room>rooms\rm_pause</room>
     <room>rooms\room7</room>
   </rooms>
+  <constants number="42">
+    <constant name="consPlayerActionSkid">-4</constant>
+    <constant name="consPlayerActionLookUp">-3</constant>
+    <constant name="consPlayerActionSpindashCharge">-2</constant>
+    <constant name="consPlayerActionDuck">-1</constant>
+    <constant name="consPlayerActionNormal">0</constant>
+    <constant name="consPlayerActionJump">1</constant>
+    <constant name="consPlayerActionRoll">2</constant>
+    <constant name="consPlayerActionSpinning3">3</constant>
+    <constant name="consPlayerActionHomingTarget">4</constant>
+    <constant name="consPlayerActionHomingNoTarget">4.5</constant>
+    <constant name="consPlayerActionSpringJump">5</constant>
+    <constant name="consPlayerActionDashRing">6</constant>
+    <constant name="consPlayerActionDashRamp">7</constant>
+    <constant name="consPlayerActionDashPad">8</constant>
+    <constant name="consPlayerActionSlide">9</constant>
+    <constant name="consPlayerActionTrick">10</constant>
+    <constant name="consPlayerActionGrinding">11</constant>
+    <constant name="consPlayerActionSwingBar">12</constant>
+    <constant name="consPlayerActionSwingBarJump">13</constant>
+    <constant name="consPlayerActionQTE">14</constant>
+    <constant name="consPlayerActionQTESucces">15</constant>
+    <constant name="consPlayerActionQTEFail">15.5</constant>
+    <constant name="consPlayerActionCorkscrew">16</constant>
+    <constant name="consPlayerActionCorkscrewRoll">17</constant>
+    <constant name="consPlayerActionStomp">18</constant>
+    <constant name="consPlayerActionWallHang">19</constant>
+    <constant name="consPlayerActionWallJump">20</constant>
+    <constant name="consPlayerAction4WayCanon">21</constant>
+    <constant name="consPlayerActionDamaged">22</constant>
+    <constant name="consPlayerActionLightRingDash">23</constant>
+    <constant name="consPlayerActionJumpPanelJump">24</constant>
+    <constant name="consPlayerActionJumpPanelLand">25</constant>
+    <constant name="consPlayerActionDead">26</constant>
+    <constant name="consPlayerActionPulley">27</constant>
+    <constant name="consPlayerActionChaosControl">28</constant>
+    <constant name="consPlayerActionPole">29</constant>
+    <constant name="consPlayerActionBungee">30</constant>
+    <constant name="consPlayerActionSuperTransformation">31</constant>
+    <constant name="consPlayerActionZipLineStart">32</constant>
+    <constant name="consPlayerActionZipLineTravel">32.5</constant>
+    <constant name="consPlayerActionPullGrab">33</constant>
+    <constant name="consPlayerActionAutoTunnel">34</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

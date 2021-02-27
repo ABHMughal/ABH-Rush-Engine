@@ -144,7 +144,7 @@ vspeed += 0.0625
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if canGrab &amp;&amp; (other.action != 22 &amp;&amp; other.action != 26)
+            <string>if canGrab &amp;&amp; (other.action != consPlayerActionDamaged &amp;&amp; other.action != consPlayerActionDead)
     instance_destroy()
 </string>
           </argument>

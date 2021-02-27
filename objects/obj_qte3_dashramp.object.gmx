@@ -96,7 +96,7 @@ image_speed = 0.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if activate &amp;&amp; other.action != 26
+            <string>if activate &amp;&amp; other.action != consPlayerActionDead
 {
     startQTE()
     draw_effect(spr_rainbowring_fx,0,1,1,true) 

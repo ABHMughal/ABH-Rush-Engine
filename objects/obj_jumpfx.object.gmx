@@ -65,7 +65,7 @@ x = obj_Sonic.x
 y = obj_Sonic.y+2
 image_xscale = obj_Sonic.xdir
 image_speed = abs(obj_Sonic.hsp)/12 + 0.5
-if obj_Sonic.action != 1 || obj_Sonic.sprp == spr_Sonic_land || obj_Sonic.sprp == spr_Shadow_land || obj_Sonic.sprp == spr_SuperSonic_land || obj_Sonic.sprp == spr_SuperShadow_land
+if obj_Sonic.action != consPlayerActionJump || obj_Sonic.sprp == spr_Sonic_land || obj_Sonic.sprp == spr_Shadow_land || obj_Sonic.sprp == spr_SuperSonic_land || obj_Sonic.sprp == spr_SuperShadow_land
     instance_destroy();
 </string>
           </argument>

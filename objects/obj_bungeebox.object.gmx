@@ -83,14 +83,14 @@ makejump = false
     audio_play_sound(snd_grab,1,false)
     other.xdir = image_xscale
     alarm[0] = 15
-    other.action = 30
+    other.action = consPlayerActionBungee
     other.hsp = 0
     other.vsp = 7
 }
-else if !activate &amp;&amp; other.action == 30 &amp;&amp; other.vsp &lt; 0 &amp;&amp; makejump
+else if !activate &amp;&amp; other.action == consPlayerActionBungee &amp;&amp; other.vsp &lt; 0 &amp;&amp; makejump
 {
     makejump = false
-    other.action = 0
+    other.action = consPlayerActionNormal
     other.hsp = 0
     other.vsp = -13
     activate = true

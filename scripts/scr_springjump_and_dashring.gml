@@ -1,5 +1,5 @@
 // spring jump and dash ring
-if (action == 5 || action == 6)
+if (action == consPlayerActionSpringJump || action == consPlayerActionDashRing)
 {
     if hsp > 0
         xdir = 1;
@@ -7,6 +7,6 @@ if (action == 5 || action == 6)
         xdir = -1;
         
     if ground
-        action = 0;
+        action = consPlayerActionNormal;
 } 
 

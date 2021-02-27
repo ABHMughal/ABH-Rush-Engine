@@ -75,7 +75,7 @@ image_index = 0
             <kind>1</kind>
             <string>with(obj_Sonic)
 {
-    action = 0
+    action = consPlayerActionNormal
     vsp = -8
     audio_play_sound(snd_springpole,1,false)
 }
@@ -130,7 +130,7 @@ alarm[1] = 60
             <kind>1</kind>
             <string>if !activate
 {
-    other.action = 33
+    other.action = consPlayerActionPullGrab
     activate = true
     other.xdir = image_xscale
     other.hsp = 0

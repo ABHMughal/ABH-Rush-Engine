@@ -2,7 +2,7 @@ if other.rings > 0
 {
     other.image_i = 0
     other.ground = false
-    other.action = 22
+    other.action = consPlayerActionDamaged
     other.vsp = -4
     other.hsp = -5*other.xdir
     other.canHit = false
@@ -17,7 +17,7 @@ else
 {
     other.image_i = 0
     other.ground = false
-    other.action = 26
+    other.action = consPlayerActionDead
     other.vsp = -4
     other.hsp = -5*other.xdir
     other.canHit = false

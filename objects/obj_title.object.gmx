@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>start = false
 image_alpha = 0
-action = 0
+action = consPlayerActionNormal
 fade_speed = 0.05
 image_speed = 0
 alarm[1] = 120
@@ -99,7 +99,7 @@ alarm[1] = 120
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>action = 1
+            <string>action = consPlayerActionJump
 </string>
           </argument>
         </arguments>
@@ -126,7 +126,7 @@ alarm[1] = 120
 {
     if image_index &lt; 2
     {
-        if action == 0
+        if action == consPlayerActionNormal
         {
             if image_alpha &lt; 1
             {
@@ -143,13 +143,13 @@ alarm[1] = 120
             if image_alpha &lt;= 0
             {
                 image_index += 1
-                action = 0
+                action = consPlayerActionNormal
             }
         }
     }
     else
     {
-        if action == 0
+        if action == consPlayerActionNormal
         {
             if image_alpha &lt; 1
             {
@@ -159,7 +159,7 @@ alarm[1] = 120
             {
                 if keyboard_check_pressed(vk_enter) || gamepad_button_check(0,gp_start) || gamepad_button_check(0,gp_face1) || keyboard_check_pressed(ord('S'))
                 {
-                    action = 1
+                    action = consPlayerActionJump
                     alarm[2] = 150
                 }
             }

@@ -73,7 +73,7 @@ activate = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if activate &amp;&amp; other.action == 11 &amp;&amp; other.action != 26
+            <string>if activate &amp;&amp; other.action == consPlayerActionGrinding &amp;&amp; other.action != consPlayerActionDead
 {
     other.hsp = image_xscale*16
     other.xdir = image_xscale;

@@ -74,11 +74,11 @@ force_power = 6
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if activate &amp;&amp; other.action != 26
+            <string>if activate &amp;&amp; other.action != consPlayerActionDead
 {
     activate = false;
     other.ground = false
-    other.action = 7
+    other.action = consPlayerActionDashRamp
     other.image_i = 0;
     other.x = x
     other.y = y - 20

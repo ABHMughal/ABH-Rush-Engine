@@ -4,7 +4,7 @@ other.image_i = 0;
 other.x = x
 other.y = y - 20
 other.xdir = image_xscale
-other.action = 14
+other.action = consPlayerActionQTE
 other.hsp = 8*other.xdir;
 other.vsp = -7
     

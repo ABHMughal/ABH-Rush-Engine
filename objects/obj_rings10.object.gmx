@@ -79,7 +79,7 @@ draw_effect(spr_ringeffect,choose(0,30,-30),1,1, true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.action != 26
+            <string>if other.action != consPlayerActionDead
 instance_destroy()
 </string>
           </argument>

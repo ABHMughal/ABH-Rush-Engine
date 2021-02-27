@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.action == 34
+            <string>if other.action == consPlayerActionAutoTunnel
 {
-    other.action = 2
+    other.action = consPlayerActionRoll
 }
 </string>
           </argument>

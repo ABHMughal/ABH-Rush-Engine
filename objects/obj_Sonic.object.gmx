@@ -82,7 +82,7 @@ asin = 0;//sine angle
 
 angle = 0;//angle of character
 i_angle = 0; //image angle
-action = 0;//checks what type of action is going on
+action = consPlayerActionNormal;//checks what type of action is going on
 
 
 
@@ -143,7 +143,7 @@ image_speed = 0;
 
 draw_yPos = 0;
 
-last_action = 0;
+last_action = consPlayerActionNormal;
 sprp = spr_Sonic_stand
 frame = 0;
 image_i = 0;
@@ -180,7 +180,7 @@ input_mode = 0  //0 means keyboard and 1 mean xbox controller
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>action = 0
+            <string>action = consPlayerActionNormal
 x = x - xdir*6
 canWallJump = false
 </string>
@@ -205,7 +205,7 @@ canWallJump = false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>action = 0
+            <string>action = consPlayerActionNormal
 </string>
           </argument>
         </arguments>
@@ -376,16 +376,16 @@ if alarm0 &gt; 0
 if alarm1 &gt; 0
 {
     alarm1 -= 1
-    if alarm1 == 1 &amp;&amp; action = 8
-        action = 0
+    if alarm1 == 1 &amp;&amp; action = consPlayerActionDashPad
+        action = consPlayerActionNormal
 }
 
 if alarm2 &gt; 0
 {
     alarm2 -= 1
-    if alarm2 == 1 &amp;&amp; action == 4.5
+    if alarm2 == 1 &amp;&amp; action == consPlayerActionHomingNoTarget
     {
-        action = 0
+        action = consPlayerActionNormal
         if character == "Sonic"
             hsp = 0
         vsp = 0
@@ -441,7 +441,7 @@ else
 
     
 //making trail
-if instance_exists(obj_boostfx) || (character == "Shadow" &amp;&amp; (action == 4.5)) || super
+if instance_exists(obj_boostfx) || (character == "Shadow" &amp;&amp; (action == consPlayerActionHomingNoTarget)) || super
 {
     step += 1
     if step &gt;= 7
@@ -459,7 +459,7 @@ if instance_exists(obj_boostfx) || (character == "Shadow" &amp;&amp; (action == 
 }
 
 
-if action == 15
+if action == consPlayerActionQTESucces
 {
     step += 1
     if step &gt;= 5
@@ -469,7 +469,7 @@ if action == 15
     }
 }
 
-if !underwater &amp;&amp; abs(hsp) &gt;= 6 &amp;&amp; ground &amp;&amp; (action == 0 || action == 1 || action == 2)
+if !underwater &amp;&amp; abs(hsp) &gt;= 6 &amp;&amp; ground &amp;&amp; (action == consPlayerActionNormal || action == consPlayerActionJump || action == consPlayerActionRoll)
     canFloat = true
 else
     canFloat = false
@@ -526,7 +526,7 @@ if !stageClear
 }
 else
 {
-    action = 0
+    action = consPlayerActionNormal
     xdir = 1
     if abs(hsp) &lt; 9
     hsp += acc
@@ -626,7 +626,7 @@ if character == "Shadow" &amp;&amp; (sprp == spr_Shadow_skate || sprp == spr_Sup
 }
 
 
-if action == 0 &amp;&amp; sprp != spr_Sonic_stand &amp;&amp; sprp != spr_Shadow_stand &amp;&amp; sprp != spr_SuperSonic_stand &amp;&amp; sprp != spr_SuperSonic_fly &amp;&amp; sprp != spr_SuperShadow_stand &amp;&amp; sprp != spr_SuperShadow_fly &amp;&amp; ground &amp;&amp; !stageClear &amp;&amp; sprp != spr_Tails_sprint &amp;&amp; !(character == "Shadow" &amp;&amp; (sprp == spr_Shadow_skate_fast || sprp == spr_Shadow_skate || sprp == spr_Shadow_fly))
+if action == consPlayerActionNormal &amp;&amp; sprp != spr_Sonic_stand &amp;&amp; sprp != spr_Shadow_stand &amp;&amp; sprp != spr_SuperSonic_stand &amp;&amp; sprp != spr_SuperSonic_fly &amp;&amp; sprp != spr_SuperShadow_stand &amp;&amp; sprp != spr_SuperShadow_fly &amp;&amp; ground &amp;&amp; !stageClear &amp;&amp; sprp != spr_Tails_sprint &amp;&amp; !(character == "Shadow" &amp;&amp; (sprp == spr_Shadow_skate_fast || sprp == spr_Shadow_skate || sprp == spr_Shadow_fly))
 {
     if (image_i == 3 || image_i == 7 ) &amp;&amp; !footstep
     {
@@ -739,6 +739,7 @@ else if acos == -1 &amp;&amp; ground
     draw_sprite_ext(sprp,image_i,x,y+2,xdir,1,i_angle,c_white,image_alpha);
 else
     draw_sprite_ext(sprp,image_i,x,y,xdir,1,i_angle,c_white,image_alpha);
+    
 </string>
           </argument>
         </arguments>

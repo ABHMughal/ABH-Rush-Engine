@@ -23,7 +23,7 @@ else
     
     currhsph = hspm
     
-    if action != 2
+    if action != consPlayerActionRoll
     {
         if hsp > hspm
             hsp = hspm
@@ -48,7 +48,7 @@ if instance_exists(obj_boostfx)
 }
 
 //skidding
-if action == 0 && ground
+if action == consPlayerActionNormal && ground
 {
     if (xdir == 1 && key_l && hsp >= 3 ) || (xdir == -1 && key_r && hsp <= -3)// abs(hsp) > 3
     {
@@ -83,12 +83,12 @@ if action == 0 && ground
             audio_play_sound(snd_skid_dirt,1,0)
         else
             audio_play_sound(snd_skidhigh,1,0)
-        action = -4
+        action = consPlayerActionSkid
         image_i = 0
          
     }
 }
-if action == -4 
+if action == consPlayerActionSkid 
 {
     if hsp > 1
         hsp -= dcc/4
@@ -101,25 +101,25 @@ if action == -4
         hsp += dcc/3
     
     if (xdir == 1 && key_r && !key_l) || (xdir == -1 && key_l && !key_r)
-        action = 0
+        action = consPlayerActionNormal
         
     if abs(hsp) <= 1 || !ground
     {
-        action = 0
+        action = consPlayerActionNormal
         xdir = -xdir
     }
 }
 
 //direction
 
-if action = 0 //&&  !instance_exists(obj_boostfx)
+if action = consPlayerActionNormal //&&  !instance_exists(obj_boostfx)
 {
     if key_l xdir = -1;
     if key_r xdir =  1;
 }
 
 ///movment
-if (action == 0 || action == 1 || action == 16)
+if (action == consPlayerActionNormal || action == consPlayerActionJump || action == consPlayerActionCorkscrew)
 {
     if ground{
         if key_r
@@ -162,7 +162,7 @@ if (action == 0 || action == 1 || action == 16)
     }
 }
 //ground spin
-if action == 2
+if action == consPlayerActionRoll
 {
     if ground{
         if hsp > bfr {hsp-=bfr;if key_l hsp-=bdcc}

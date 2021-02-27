@@ -105,9 +105,9 @@ if instance_exists(obj_Sonic)
             <kind>1</kind>
             <string>if canFollow
 {
-    if !(obj_Sonic.action == 14 &amp;&amp; abs(obj_Sonic.hsp) &lt;= 0.625 &amp;&amp; obj_Sonic.vsp &lt;= 0.3125)
+    if !(obj_Sonic.action == consPlayerActionQTE &amp;&amp; abs(obj_Sonic.hsp) &lt;= 0.625 &amp;&amp; obj_Sonic.vsp &lt;= 0.3125)
     {
-        if (obj_Sonic.action != 32 &amp;&amp; obj_Sonic.action != 32.5)
+        if (obj_Sonic.action != consPlayerActionZipLineStart &amp;&amp; obj_Sonic.action != consPlayerActionZipLineTravel)
         {
             x = clamp(obj_Sonic.x + obj_Sonic.hsp*12*obj_Sonic.acos,obj_display_manager.ideal_width/2,room_width - (obj_display_manager.ideal_width/2));
             y = clamp(obj_Sonic.y + obj_Sonic.vsp*2,obj_display_manager.ideal_height/2,room_height - (obj_display_manager.ideal_height/2));

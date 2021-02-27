@@ -1,23 +1,23 @@
 //corkscrew movement (main movement is in corkscrew object)
-if action == 16
+if action == consPlayerActionCorkscrew
 {
     vsp = 0
     angle = 0
     if ground || abs(obj_Sonic.hsp) < 4
     {
-        action = 0
+        action = consPlayerActionNormal
         image_i = 0
     }
     
 }
 
-if action == 17 // corkscrew while rolling
+if action == consPlayerActionCorkscrewRoll // corkscrew while rolling
 {
     vsp = 0
     angle = 0
     if ground || abs(obj_Sonic.hsp) < 4
     {
-        action = 2
+        action = consPlayerActionRoll
         image_i = 0
     }
 }

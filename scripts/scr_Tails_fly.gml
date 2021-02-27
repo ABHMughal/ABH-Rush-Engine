@@ -1,16 +1,16 @@
 //tails fly
 
-if (action == 1 && djmp && key_jumpr)
+if (action == consPlayerActionJump && djmp && key_jumpr)
     djmp = false
 
-if action == 1 && key_jump && !djmp
+if action == consPlayerActionJump && key_jump && !djmp
 {
-    action = 4
+    action = consPlayerActionHomingTarget
     alarm[3] = 480
     scrPlaySound(snd_Tails_fly,0.6,1,true)
 }
 
-if action == 4 || action == 4.5
+if action == consPlayerActionHomingTarget || action == consPlayerActionHomingNoTarget
 {
     if key_l xdir = -1;
     if key_r xdir =  1;
@@ -50,16 +50,16 @@ if action == 4 || action == 4.5
         vsp = 4
     if ground
     {
-        action = 0
+        action = consPlayerActionNormal
     }
 }
 
-if action == 4 && key_jump
+if action == consPlayerActionHomingTarget && key_jump
 {
     vsp -= 0.5
 }
 
-if action == 4
+if action == consPlayerActionHomingTarget
 {
     var enemy;
     enemy = instance_place(x,y - 18,obj_enemy)
@@ -75,8 +75,8 @@ if action == 4
 if ground && !djmp
     djmp = true
     
-if !(action == 4 || action == 4.5)
+if !(action == consPlayerActionHomingTarget || action == consPlayerActionHomingNoTarget)
     alarm[3] = 0
     
-if audio_is_playing(snd_Tails_fly) && action != 4
+if audio_is_playing(snd_Tails_fly) && action != consPlayerActionHomingTarget
     audio_stop_sound(snd_Tails_fly)

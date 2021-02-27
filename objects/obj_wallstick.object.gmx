@@ -50,7 +50,7 @@
             <kind>1</kind>
             <string>if !place_meeting(x,y,obj_Sonic)
     activate = true
-else if place_meeting(x,y,obj_Sonic) &amp;&amp; obj_Sonic.action == 19
+else if place_meeting(x,y,obj_Sonic) &amp;&amp; obj_Sonic.action == consPlayerActionWallHang
     obj_Sonic.x = x+16*image_xscale
 </string>
           </argument>
@@ -97,14 +97,14 @@ else if place_meeting(x,y,obj_Sonic) &amp;&amp; obj_Sonic.action == 19
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if activate &amp;&amp; other.action != 26 &amp;&amp; ((other.hsp &gt; 1 &amp;&amp; image_xscale &lt;= -1) || (other.hsp &lt; -1 &amp;&amp; image_xscale &lt;= 1))
+            <string>if activate &amp;&amp; other.action != consPlayerActionDead &amp;&amp; ((other.hsp &gt; 1 &amp;&amp; image_xscale &lt;= -1) || (other.hsp &lt; -1 &amp;&amp; image_xscale &lt;= 1))
 {
     /*
     with(other)
     {
         if place_meeting(x,y,obj_walls)
         {
-            action = 10
+            action = consPlayerActionTrick
             xdir = -self.image_xscale
             alarm[2] = 80
             self.activate = false
@@ -119,7 +119,7 @@ else if place_meeting(x,y,obj_Sonic) &amp;&amp; obj_Sonic.action == 19
     }
     */
     
-    other.action = 19
+    other.action = consPlayerActionWallHang
     other.xdir = -image_xscale
     //other.x = x+16*image_xscale
     

@@ -72,11 +72,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if activate &amp;&amp; other.action != 26 &amp;&amp; other.ground = false &amp;&amp; (other.action == 7 || other.action == 0 || other.action == 1)
+            <string>if activate &amp;&amp; other.action != consPlayerActionDead &amp;&amp; other.ground = false &amp;&amp; (other.action == consPlayerActionDashRamp || other.action == consPlayerActionNormal || other.action == consPlayerActionJump)
 {
     activate = false
     audio_play_sound(snd_grab,1,false)
-    other.action = 32
+    other.action = consPlayerActionZipLineStart
     other.zipline_speed = other.hsp
     
     other.y = y + 6

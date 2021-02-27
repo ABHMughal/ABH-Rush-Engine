@@ -72,12 +72,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if activate &amp;&amp; other.action != 26
+            <string>if activate &amp;&amp; other.action != consPlayerActionDead
 {
-    if other.action != 29
+    if other.action != consPlayerActionPole
         audio_play_sound(snd_grab,1,false)
     activate = false
-    other.action = 29
+    other.action = consPlayerActionPole
 }
 </string>
           </argument>

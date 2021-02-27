@@ -25,12 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.action != 34
+            <string>if other.action != consPlayerActionAutoTunnel
 {
     other.xdir = 1
     other.angle = image_angle
     other.ground = true
-    other.action = 34
+    other.action = consPlayerActionAutoTunnel
     
     if instance_exists(obj_boostfx)
     {

@@ -61,18 +61,18 @@ sides_img = 0
     sides.image_i = 0
     image_speed = 0
     image_index = 0
-    if place_meeting(x,y,obj_Sonic) &amp;&amp; canUse &amp;&amp; obj_Sonic.action != 26
+    if place_meeting(x,y,obj_Sonic) &amp;&amp; canUse &amp;&amp; obj_Sonic.action != consPlayerActionDead
     {
         timer = setTimer
         activate = true
         animate = true
-        obj_Sonic.action = 21
+        obj_Sonic.action = consPlayerAction4WayCanon
         canUse = false
         audio_play_sound(snd_4waycanon_start,1,false)
         audio_play_sound(snd_4waycanon_running,1,false)
     }   
 }
-else if activate &amp;&amp; obj_Sonic.action == 21
+else if activate &amp;&amp; obj_Sonic.action == consPlayerAction4WayCanon
 {
     if animate
     {
@@ -141,11 +141,11 @@ else if activate &amp;&amp; obj_Sonic.action == 21
     if timer &lt;= 0
     {
         activate = false
-        obj_Sonic.action = 0
+        obj_Sonic.action = consPlayerActionNormal
         audio_play_sound(snd_4waycanon_timeout,1,false)
     }
 }
-if !place_meeting(x,y,obj_Sonic) &amp;&amp; obj_Sonic.action != 21
+if !place_meeting(x,y,obj_Sonic) &amp;&amp; obj_Sonic.action != consPlayerAction4WayCanon
 {
     canUse = true
     if audio_is_playing(snd_4waycanon_running)
@@ -184,7 +184,7 @@ draw_sprite_ext(spr_4waycanon_sideleft,sides_img,x,y,1,1,sides_direction,c_white
 draw_sprite_ext(spr_4waycanon_sidedown,sides_img,x,y,1,1,sides_direction,c_white,1)
 draw_sprite_ext(spr_4waycanon_sideup,sides_img,x,y,1,1,sides_direction,c_white,1)
     
-if place_meeting(x,y,obj_Sonic) &amp;&amp; obj_Sonic.action == 21 &amp;&amp; (keyboard_check(vk_up) || keyboard_check(vk_down) || keyboard_check(vk_left) || keyboard_check(vk_right) || gamepad_button_check(0,gp_padd) || gamepad_button_check(0,gp_padu) || gamepad_button_check(0,gp_padr) || gamepad_button_check(0,gp_padl))
+if place_meeting(x,y,obj_Sonic) &amp;&amp; obj_Sonic.action == consPlayerAction4WayCanon &amp;&amp; (keyboard_check(vk_up) || keyboard_check(vk_down) || keyboard_check(vk_left) || keyboard_check(vk_right) || gamepad_button_check(0,gp_padd) || gamepad_button_check(0,gp_padu) || gamepad_button_check(0,gp_padr) || gamepad_button_check(0,gp_padl))
 {
     if (sides_img &lt; 6 &amp;&amp; (keyboard_check(vk_up) || keyboard_check(vk_down) || keyboard_check(vk_left) || keyboard_check(vk_right) || gamepad_button_check(0,gp_padd) || gamepad_button_check(0,gp_padu) || gamepad_button_check(0,gp_padr) || gamepad_button_check(0,gp_padl)))
         sides_img += 1

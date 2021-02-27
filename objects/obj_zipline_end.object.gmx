@@ -48,10 +48,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.action == 32.5 &amp;&amp; x &lt;= other.x
+            <string>if other.action == consPlayerActionZipLineTravel &amp;&amp; x &lt;= other.x
 {
     
-    other.action = 0
+    other.action = consPlayerActionNormal
     other.hsp = other.zipline_speed
     other.vsp = 0
     other.zipline_speed = 0

@@ -31,7 +31,7 @@ force_power = 6
 canHit = true
 image_speed = 0.25
 
-action = 0
+action = consPlayerActionNormal
 
 move_speed = 1.5
 
@@ -59,7 +59,7 @@ hspeed = move_speed*image_xscale
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>action = 0
+            <string>action = consPlayerActionNormal
 hspeed = image_xscale*3
 </string>
           </argument>
@@ -85,7 +85,7 @@ hspeed = image_xscale*3
             <kind>1</kind>
             <string>event_inherited()
 
-if action == 0
+if action == consPlayerActionNormal
 {
     if image_index &gt;= 2
         image_index = 0
@@ -97,7 +97,7 @@ else
     hspeed = 0
     if image_index &gt;= 7
     {
-        action = 0
+        action = consPlayerActionNormal
         hspeed = image_xscale*move_speed
     }   
         
@@ -152,15 +152,15 @@ hspeed = image_xscale*move_speed
             <kind>1</kind>
             <string>if canHit &amp;&amp; obj_Sonic.ground = false &amp;&amp; ((collision_line(x-12, y-3, x+7, y-3, obj_Sonic, true, true) &amp;&amp; image_xscale == 1) || (collision_line(x+12, y-3, x-7, y-3, obj_Sonic, true, true) &amp;&amp; image_xscale == -1))
 {
-    obj_Sonic.action = 0
+    obj_Sonic.action = consPlayerActionNormal
     obj_Sonic.vsp = -force_power
-    if obj_Sonic.action == 4
+    if obj_Sonic.action == consPlayerActionHomingTarget
     {
         obj_Sonic.hsp = 0        
     }
-    if action == 0
+    if action == consPlayerActionNormal
         audio_play_sound(snd_spring,1,false)
-    action = 1
+    action = consPlayerActionJump
     image_index = 2
 }
 else

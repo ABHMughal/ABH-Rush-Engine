@@ -62,7 +62,7 @@ if character == "Shadow" && (sprp == spr_Shadow_skate || sprp == spr_SuperShadow
 }
 
 
-if action == 0 && sprp != spr_Sonic_stand && sprp != spr_Shadow_stand && sprp != spr_SuperSonic_stand && sprp != spr_SuperSonic_fly && sprp != spr_SuperShadow_stand && sprp != spr_SuperShadow_fly && ground && !stageClear && sprp != spr_Tails_sprint && sprp != spr_Tails_stand && sprp != spr_Shadow_skate_fast && sprp != spr_Shadow_skate && sprp != spr_Shadow_fly
+if action == consPlayerActionNormal && sprp != spr_Sonic_stand && sprp != spr_Shadow_stand && sprp != spr_SuperSonic_stand && sprp != spr_SuperSonic_fly && sprp != spr_SuperShadow_stand && sprp != spr_SuperShadow_fly && ground && !stageClear && sprp != spr_Tails_sprint && sprp != spr_Tails_stand && sprp != spr_Shadow_skate_fast && sprp != spr_Shadow_skate && sprp != spr_Shadow_fly
 {
     if (image_i == 3 || image_i == 7 ) && !footstep
     {

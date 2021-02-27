@@ -77,14 +77,14 @@ force_power = 8
             <string>if activate
 {
     other.angle = 0
-    if other.action == 4
+    if other.action == consPlayerActionHomingTarget
     {
         vspeed = 0
         hspeed = 0
         with(obj_hominglock)
             instance_destroy()
     }   
-    other.action = 5
+    other.action = consPlayerActionSpringJump
     other.ground = false
     other.image_i = 0;
     other.x = x + 16*cos(degtorad(image_angle))
@@ -137,19 +137,19 @@ force_power = 8
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if activate &amp;&amp; other.action != 26
+            <string>if activate &amp;&amp; other.action != consPlayerActionDead
 {
     draw_effect(spr_dash_fx,image_angle,1,1, false)
     
     other.angle = 0
-    if other.action == 4
+    if other.action == consPlayerActionHomingTarget
     {
         vspeed = 0
         hspeed = 0
         with(obj_hominglock)
             instance_destroy()
     }   
-    other.action = 5
+    other.action = consPlayerActionSpringJump
     other.ground = false
     other.image_i = 0;
     other.x = x + 16*cos(degtorad(image_angle))
@@ -213,19 +213,19 @@ force_power = 8
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if activate &amp;&amp; other.action != 26
+            <string>if activate &amp;&amp; other.action != consPlayerActionDead
 {
     draw_effect(spr_dash_fx,image_angle,1,1, false)
     
     other.angle = 0
-    if other.action == 4
+    if other.action == consPlayerActionHomingTarget
     {
         vspeed = 0
         hspeed = 0
         with(obj_hominglock)
             instance_destroy()
     }   
-    other.action = 5
+    other.action = consPlayerActionSpringJump
     other.ground = false
     other.image_i = 0;
     other.x = x + 16*cos(degtorad(image_angle))

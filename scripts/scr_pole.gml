@@ -1,5 +1,5 @@
 //pole
-if action == 29
+if action == consPlayerActionPole
 {
     if place_meeting(x,y,obj_pole)
     {
@@ -11,7 +11,7 @@ if action == 29
         
         if key_jump
         {
-            action = 1
+            action = consPlayerActionJump
             if key_r
                 hsp = 7
             else if key_l 
@@ -22,5 +22,5 @@ if action == 29
         }
     }
     else
-        action = 0
+        action = consPlayerActionNormal
 }
