@@ -4,7 +4,7 @@ if key_boost
 if key_boostr
     boosting = false
 
-if boosting && (((action == 0 || action == 11) && ground) || action == 1 || action == 16)
+if boosting && (((action == consPlayerActionNormal || action == consPlayerActionGrinding) && ground) || action == consPlayerActionJump || action == consPlayerActionCorkscrew)
 {
     if !instance_exists(obj_boostfx) && boostamount > 0
     {

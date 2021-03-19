@@ -63,7 +63,7 @@ time -= 1
     else
     {
         obj_Sonic.qte_amount = 1
-        obj_Sonic.action = 15
+        obj_Sonic.action = consPlayerActionQTESucces
         obj_Sonic.vsp = -8
         obj_Sonic.image_i = 0
         obj_Sonic.grv = 0.21875;
@@ -81,7 +81,7 @@ else
 {
     obj_Sonic.qte_amount = 1
     audio_play_sound(snd_qte_fail,1,false)
-    obj_Sonic.action = 15.5
+    obj_Sonic.action = consPlayerActionQTEFail
     obj_Sonic.vsp = -3
     obj_Sonic.hsp = obj_Sonic.xdir*3
     obj_Sonic.grv = 0.21875;

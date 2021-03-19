@@ -1,5 +1,5 @@
 //taking damage
-if action == 22
+if action == consPlayerActionDamaged
 {
     if ground
     {    
@@ -9,7 +9,7 @@ if action == 22
     if image_i >= 21
     {
         image_i = 0
-        action = 0
+        action = consPlayerActionNormal
     }
 }
 

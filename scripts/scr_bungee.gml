@@ -1,5 +1,5 @@
 //bungee
-if action == 30
+if action == consPlayerActionBungee
 {
     hsp = 0
     vsp -= 0.5

@@ -1,6 +1,6 @@
 
 //homing attack
-if (action == 1 || (action == 0 && !ground) || action == 13) // || (action == 5 && hsp == 0))
+if (action == consPlayerActionJump || (action == consPlayerActionNormal && !ground) || action == consPlayerActionSwingBarJump) // || (action == consPlayerActionSpringJump && hsp == 0))
 {
     canHome = true   
 }
@@ -23,7 +23,7 @@ else if distance_to_object(instance_nearest(x,y,obj_homable)) > 200 || ground ||
         }
 }
 
-if (action == 1 && djmp && key_jumpr) || (action == 0 && !ground) || action == 5
+if (action == consPlayerActionJump && djmp && key_jumpr) || (action == consPlayerActionNormal && !ground) || action == consPlayerActionSpringJump
     djmp = false
     
 
@@ -31,9 +31,9 @@ if instance_exists(obj_hominglock)
 {
     if key_jump && !djmp
     {
-        if action != 4
+        if action != consPlayerActionHomingTarget
             audio_play_sound(snd_homing,1,false);
-        action = 4
+        action = consPlayerActionHomingTarget
         hsp = 0
         vsp = 0
         move_towards_point(obj_hominglock.x,obj_hominglock.y,20);
@@ -41,16 +41,16 @@ if instance_exists(obj_hominglock)
 }
 else
 {
-    if key_jump && !ground && (action == 1 || action == 0) && !djmp && djmp2
+    if key_jump && !ground && (action == consPlayerActionJump || action == consPlayerActionNormal) && !djmp && djmp2
     {
-        if action != 4.5
+        if action != consPlayerActionHomingNoTarget
         {
             if character == "Sonic"
                 audio_play_sound(snd_homing,1,false);
             else if character == "Shadow"
                 audio_play_sound(snd_Shadow_Warp,1,false);
         }
-        action = 4.5
+        action = consPlayerActionHomingNoTarget
         hsp = xdir*9
         vsp = 0
         alarm2 = 15
@@ -58,9 +58,9 @@ else
         djmp2 = false
         image_i = 0
     }
-    else if action = 4.5 && ground
+    else if action = consPlayerActionHomingNoTarget && ground
     {
-        action=0
+        action=consPlayerActionNormal
         alarm2 = 0
         djmp = false
         jmp2 = false
@@ -74,13 +74,13 @@ if !djmp2 && ground
     djmp2 = true
     
     
-if action == 4.5
+if action == consPlayerActionHomingNoTarget
 {
     hsp = xdir*12
     vsp = 0
 }
 
-if action == 4 && instance_exists(obj_hominglock)
+if action == consPlayerActionHomingTarget && instance_exists(obj_hominglock)
 {
     move_towards_point(obj_hominglock.x,obj_hominglock.y,20);
 }
@@ -90,8 +90,8 @@ else
     hspeed = 0;
 }
 
-if action == 4 && (place_meeting(x,y,obj_walls) || ground) 
-    action = 0
+if action == consPlayerActionHomingTarget && (place_meeting(x,y,obj_walls) || ground) 
+    action = consPlayerActionNormal
 
-//after homing attack trick is action 10 which is not controlled here, however djmp2 is controlled in draw event 
+//after homing attack trick is action consPlayerActionTrick which is not controlled here, however djmp2 is controlled in draw event 
 

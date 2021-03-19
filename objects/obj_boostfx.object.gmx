@@ -135,18 +135,18 @@ obj_Sonic.boosting = false
     if image_alpha &lt; 1
         image_alpha += 0.125
     
-    //if obj_Sonic.action != 16 &amp;&amp; obj_Sonic.action != 17
+    //if obj_Sonic.action != consPlayerActionCorkscrew &amp;&amp; obj_Sonic.action != consPlayerActionCorkscrewRoll
         image_angle = obj_Sonic.boost_direction //point_direction(obj_Sonic.x_begin,obj_Sonic.y_begin,x,y);
     
     if image_angle &gt; 90 &amp;&amp; image_angle &lt; 270
         image_yscale = -1
         
     if ((!keyboard_check(ord('A')) &amp;&amp; obj_Sonic.input_mode == 0) || (!gamepad_button_check(0,gp_face3) &amp;&amp; obj_Sonic.input_mode == 1)) || obj_Sonic.boostamount &lt;= 0 || obj_Sonic.key_boostr 
-    || obj_Sonic.action == 12 || obj_Sonic.action == 14 || obj_Sonic.action == 4.5 || obj_Sonic.action == 4
-    || obj_Sonic.action == 21 || obj_Sonic.action == 24 || obj_Sonic.action == 27 
-    || obj_Sonic.action == 25 || obj_Sonic.action == 26 || obj_Sonic.stageClear 
-    || (obj_Sonic.ground &amp;&amp; obj_Sonic.hsp &lt; 2 &amp;&amp; obj_Sonic.hsp &gt; -2) || airtime &lt; 0 || obj_Sonic.action == 29 
-    || obj_Sonic.action == 30  
+    || obj_Sonic.action == consPlayerActionSwingBar || obj_Sonic.action == consPlayerActionQTE || obj_Sonic.action == consPlayerActionHomingNoTarget || obj_Sonic.action == consPlayerActionHomingTarget
+    || obj_Sonic.action == consPlayerAction4WayCanon || obj_Sonic.action == consPlayerActionJumpPanelJump || obj_Sonic.action == consPlayerActionPulley 
+    || obj_Sonic.action == consPlayerActionJumpPanelLand || obj_Sonic.action == consPlayerActionDead || obj_Sonic.stageClear 
+    || (obj_Sonic.ground &amp;&amp; obj_Sonic.hsp &lt; 2 &amp;&amp; obj_Sonic.hsp &gt; -2) || airtime &lt; 0 || obj_Sonic.action == consPlayerActionPole 
+    || obj_Sonic.action == consPlayerActionBungee  
         alive = false
 }        
 else

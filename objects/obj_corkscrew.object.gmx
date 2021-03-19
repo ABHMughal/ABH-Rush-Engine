@@ -48,11 +48,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if place_meeting(x,y,obj_Sonic) &amp;&amp; ((obj_Sonic.action == 0 &amp;&amp; obj_Sonic.ground) || obj_Sonic.action == 16) &amp;&amp; abs(obj_Sonic.hsp) &gt;= 4
+            <string>if place_meeting(x,y,obj_Sonic) &amp;&amp; ((obj_Sonic.action == consPlayerActionNormal &amp;&amp; obj_Sonic.ground) || obj_Sonic.action == consPlayerActionCorkscrew) &amp;&amp; abs(obj_Sonic.hsp) &gt;= 4
 {
-    if obj_Sonic.action != 16 
+    if obj_Sonic.action != consPlayerActionCorkscrew 
         obj_Sonic.image_i = 0
-    obj_Sonic.action = 16
+    obj_Sonic.action = consPlayerActionCorkscrew
     obj_Sonic.ground = false
     
     var relative_position, angle_in_corkscrew
@@ -62,9 +62,9 @@
     obj_Sonic.y = y + 8 + (1 + cos(angle_in_corkscrew))*( 65*0.5 );
     obj_Sonic.image_i = abs((radtodeg(angle_in_corkscrew)/360*11) mod 12)
 }  
-else if place_meeting(x,y,obj_Sonic) &amp;&amp; ((obj_Sonic.action == 2 &amp;&amp; obj_Sonic.ground) || obj_Sonic.action == 17) &amp;&amp; abs(obj_Sonic.hsp) &gt;= 4
+else if place_meeting(x,y,obj_Sonic) &amp;&amp; ((obj_Sonic.action == consPlayerActionRoll &amp;&amp; obj_Sonic.ground) || obj_Sonic.action == consPlayerActionCorkscrewRoll) &amp;&amp; abs(obj_Sonic.hsp) &gt;= 4
 {
-    obj_Sonic.action = 17
+    obj_Sonic.action = consPlayerActionCorkscrewRoll
     obj_Sonic.ground = false
         
     var relative_position, angle_in_corkscrew

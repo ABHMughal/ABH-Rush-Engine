@@ -50,10 +50,10 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited()
-if canHit &amp;&amp; other.action != 26
+if canHit &amp;&amp; other.action != consPlayerActionDead
 {
     other.image_i = 0
-    other.action = 12;
+    other.action = consPlayerActionSwingBar;
     canHit = false
 }
 </string>

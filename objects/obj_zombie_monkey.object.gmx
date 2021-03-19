@@ -28,7 +28,7 @@
             <string>event_inherited()
 
 ground = true
-action = 0
+action = consPlayerActionNormal
 image_speed = 0.25
 sound = snd_monkeydamage
 </string>
@@ -89,23 +89,23 @@ if canHit
         image_xscale = 1
     else
         image_xscale = -1
-    if ground &amp;&amp; action == 0 &amp;&amp; (distance_to_object(obj_Sonic) &lt; 200 || (distance_to_object(obj_Sonic) &lt; 350 &amp;&amp; abs(obj_Sonic.hsp) &gt;= 12)) &amp;&amp; (obj_Sonic.y &lt;= y + 10 &amp;&amp; obj_Sonic.y &gt; y - 100)
+    if ground &amp;&amp; action == consPlayerActionNormal &amp;&amp; (distance_to_object(obj_Sonic) &lt; 200 || (distance_to_object(obj_Sonic) &lt; 350 &amp;&amp; abs(obj_Sonic.hsp) &gt;= 12)) &amp;&amp; (obj_Sonic.y &lt;= y + 10 &amp;&amp; obj_Sonic.y &gt; y - 100)
     {
         sprite_index = spr_monkey_jump
         image_index = 0
-        action = 1
+        action = consPlayerActionJump
     }
-    if action == 1
+    if action == consPlayerActionJump
     {
         if image_index &gt;= 4
         {
-            action = 2   
+            action = consPlayerActionRoll   
             ground = false
             audio_play_sound(snd_monkeyjump,1,false)
             vspeed = -6
         }
     }
-    if action == 2
+    if action == consPlayerActionRoll
     {
         if image_index &gt;= 6
             image_index = 6
@@ -113,7 +113,7 @@ if canHit
         if place_meeting(x,y+1,obj_walls) &amp;&amp; vspeed &gt; 0
         {
             ground = true
-            action = 0
+            action = consPlayerActionNormal
             vspeed = 0
         }   
     }

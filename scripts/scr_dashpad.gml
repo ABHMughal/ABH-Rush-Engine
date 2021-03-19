@@ -1,5 +1,5 @@
 //dash pad
-if action == 8
+if action == consPlayerActionDashPad
 {
     if hsp > 0
         hsp = hspl

@@ -2,16 +2,16 @@ walksound = false
 //boost particle trail
 part_type_direction(global.particle4, wrap_angle(floor(point_direction(x_begin,y_begin,x,y))), wrap_angle(floor(point_direction(x_begin,y_begin,x,y))),0,0);
          
-if (action == 4 || action == 4.5 || action == 18 || (instance_exists(obj_boostfx)))
+if (action == consPlayerActionHomingTarget || action == consPlayerActionHomingNoTarget || action == consPlayerActionStomp || (instance_exists(obj_boostfx)))
 {
      part_particles_create(global.particle4,x,y,global.particle4,2);
 }
 
 // handling image angle 
 
-if hsp == 0 && (action <= 0) && ground
+if hsp == 0 && (action <= consPlayerActionNormal) && ground
     i_angle = 0
-else if (i_angle != 0 && action == 0 && !ground)
+else if (i_angle != 0 && action == consPlayerActionNormal && !ground)
 {
     if i_angle%360 < 180   
         i_angle -= 7
@@ -35,11 +35,11 @@ else
     i_angle = angle
 
 //if on the jump panel then set the angle according to jump panel's angle
-if action == 25
+if action == consPlayerActionJumpPanelLand
     i_angle = instance_nearest(x,y,obj_jumppanel_parent).image_angle
     
 //if took damage then make invincible effect
-if hitInvincible > 0 && hitInvincible % 2 == 0 && action != 22
+if hitInvincible > 0 && hitInvincible % 2 == 0 && action != consPlayerActionDamaged
     image_alpha = !image_alpha
 else
     image_alpha = 1
@@ -59,14 +59,14 @@ if frame >= 1
 //This section is where the sprite changes according to the action performed by SuperSonic
 
 //standing
-if hsp = 0 && ground && action == 0
+if hsp = 0 && ground && action == consPlayerActionNormal
 {
     sprp = spr_SuperSonic_stand;
     frame += 0.20;
-    last_action = 0;
+    last_action = consPlayerActionNormal;
 }
 //ducking
-if action == -1
+if action == consPlayerActionDuck
 {
     sprp = spr_SuperSonic_duck
 
@@ -75,7 +75,7 @@ if action == -1
     else frame += 0.5
 }
 //lookup
-if action == -3
+if action == consPlayerActionLookUp
 {
     sprp = spr_SuperSonic_lookup
     
@@ -85,13 +85,13 @@ if action == -3
 }
 
 //walking running and spriting
-if (hsp != 0 && ground) && action == 0
+if (hsp != 0 && ground) && action == consPlayerActionNormal
 {
-    if last_action == 0
+    if last_action == consPlayerActionNormal
     {
         image_i = 0;
     }
-    last_action = 1;
+    last_action = consPlayerActionJump;
     
         
     if abs(hsp) < 3
@@ -112,7 +112,7 @@ if (hsp != 0 && ground) && action == 0
     if image_i >= 8
         image_i = 0
 }
-else if !ground && action == 0
+else if !ground && action == consPlayerActionNormal
 {
     if vsp < -1
     {
@@ -143,7 +143,7 @@ else if !ground && action == 0
 }
 //skidding
 
-if action == -4
+if action == consPlayerActionSkid
 {
     if sprp != spr_SuperSonic_breaklow && sprp != spr_SuperSonic_breakhigh
     {
@@ -168,7 +168,7 @@ if action == -4
 
 //jumping and rolling
 
-if action == 1 && vsp > 0 && (collision_line(x,y,x,y+80,obj_walls,true,true) || vsp > 9)
+if action == consPlayerActionJump && vsp > 0 && (collision_line(x,y,x,y+80,obj_walls,true,true) || vsp > 9)
 {
     if sprp != spr_SuperSonic_land
         image_i = 0
@@ -177,7 +177,7 @@ if action == 1 && vsp > 0 && (collision_line(x,y,x,y+80,obj_walls,true,true) || 
         image_i = 1
     frame += 0.25
 }
-else if (action == 1 || action == 2 || action == 3  || action == 34) //&& sprp != spr_SuperSonic_land
+else if (action == consPlayerActionJump || action == consPlayerActionRoll || action == consPlayerActionAutoTunnel) //&& sprp != spr_SuperSonic_land
 {
     frame += 1/max(2-(abs(hsp)),1);
     sprp = spr_SuperSonic_spinjump;
@@ -187,7 +187,7 @@ if sprp == spr_SuperSonic_land
     frame += 0.25
 
 //spindash
-if action == -2
+if action == consPlayerActionSpindashCharge
 {
     sprp = spr_SuperSonic_spindash
     frame += 0.5
@@ -198,38 +198,38 @@ if action == -2
 }
 
 //homing
-if action == 4 || action == 4.5
+if action == consPlayerActionHomingTarget || action == consPlayerActionHomingNoTarget
 {
     frame += 1
     sprp = spr_SuperSonic_spinjump;
 }
 
-if action == 5 //springjump
+if action == consPlayerActionSpringJump //springjump
 {
     if sprp == spr_SuperSonic_jump || sprp == spr_SuperSonic_walljump
     {
         frame += 0.25;
         if vsp >= -4 
-            action = 0   
+            action = consPlayerActionNormal   
     }
     if sprp == spr_SuperSonic_corkscrew
     {
         if image_i <= 10
             frame += 0.25;
         else
-            action = 0     
+            action = consPlayerActionNormal     
     }   
 }
 
 //walljump
-if action == 6
+if action == consPlayerActionDashRing
 {
     sprp = spr_SuperSonic_walljump
     frame += 0.25
 }
 
 //dashramp
-if action == 7
+if action == consPlayerActionDashRamp
 {
     /*if !key_boost && sprp != spr_SuperSonic_walljump
     {
@@ -277,39 +277,39 @@ if action == 7
     
 }
 //dashpad
-if action == 8
+if action == consPlayerActionDashPad
 {
     sprp = spr_SuperSonic_spinjump;
     frame += 1/max(2-(abs(hsp)),1);
 }
 //slide
-if action == 9 && (sprp == spr_SuperSonic_fall || sprp == spr_SuperSonic_spinjump || sprp == spr_SuperSonic_walk || sprp == spr_SuperSonic_jog || sprp == spr_SuperSonic_runslow || sprp == spr_SuperSonic_runfast || sprp == spr_SuperSonic_sprint)
+if action == consPlayerActionSlide && (sprp == spr_SuperSonic_fall || sprp == spr_SuperSonic_spinjump || sprp == spr_SuperSonic_walk || sprp == spr_SuperSonic_jog || sprp == spr_SuperSonic_runslow || sprp == spr_SuperSonic_runfast || sprp == spr_SuperSonic_sprint)
 {   
     image_i = 0
     sprp = spr_SuperSonic_slidestart;
 }
-if action == 9 && sprp == spr_SuperSonic_slidestart
+if action == consPlayerActionSlide && sprp == spr_SuperSonic_slidestart
     frame += 0.5;
     
-if action == 9 && sprp == spr_SuperSonic_slidestart && image_i >= 3
+if action == consPlayerActionSlide && sprp == spr_SuperSonic_slidestart && image_i >= 3
     sprp = spr_SuperSonic_slide
     
-if action == 9 && sprp == spr_SuperSonic_slide
+if action == consPlayerActionSlide && sprp == spr_SuperSonic_slide
     frame += 1/max(7-(abs(hsp)),1);
 
 //trick
-if action == 10
+if action == consPlayerActionTrick
 {
     if image_i >= 9
     {
-        action = 0;
+        action = consPlayerActionNormal;
         djmp2 = true
     }
     frame += 0.25;
 }
 
 //grinding
-if action == 11 && collision_line(x,y,x+25*asin,y+25*acos,obj_rail,true,true) && ground
+if action == consPlayerActionGrinding && collision_line(x,y,x+25*asin,y+25*acos,obj_rail,true,true) && ground
 {
     if abs(hsp) < 8.5
         sprp = spr_SuperSonic_grind
@@ -319,20 +319,20 @@ if action == 11 && collision_line(x,y,x+25*asin,y+25*acos,obj_rail,true,true) &&
 }
 
 //bar swing
-if action == 12
+if action == consPlayerActionSwingBar
 {
     sprp = spr_SuperSonic_360swing
     frame += 0.35
 }
 
-if action == 13
+if action == consPlayerActionSwingBarJump
 {
     sprp = spr_SuperSonic_roll
     frame += 1;
 }
 
 //qte
-if action == 14
+if action == consPlayerActionQTE
 {
     sprp = spr_SuperSonic_jump;
     frame += 0.25
@@ -340,15 +340,15 @@ if action == 14
 
 
 //qte success
-if action == 15
+if action == consPlayerActionQTESucces
 {
     sprp = spr_SuperSonic_qtetrick2
     frame += 0.35
     if image_i >= 22
-        action = 0
+        action = consPlayerActionNormal
 }
 //qte fail
-if action == 15.5
+if action == consPlayerActionQTEFail
 {
     sprp = spr_SuperSonic_qtefail
     if image_i <= 3
@@ -360,43 +360,43 @@ if action == 15.5
 }
 
 //corkscrew
-if action == 16
+if action == consPlayerActionCorkscrew
 {
     sprp = spr_SuperSonic_corkscrew
 }
-if action == 17
+if action == consPlayerActionCorkscrewRoll
 {
     sprp = spr_SuperSonic_spinjump
     frame += 1/max(2-(abs(hsp)),1);
 }
 
 //stomp
-if action == 18
+if action == consPlayerActionStomp
 {
     sprp = spr_SuperSonic_stomp
     frame += 0.5
 }
 
 //walljump
-if action == 19
+if action == consPlayerActionWallHang
 {
     sprp = spr_SuperSonic_wallhang
 }
-if action == 20
+if action == consPlayerActionWallJump
 {
     sprp = spr_SuperSonic_walljump
     frame += 0.25
 }
 
 //4way canon
-if action = 21
+if action = consPlayerAction4WayCanon
 {
     sprp = spr_SuperSonic_roll
     frame += 0.25
 }
 
 //taking damage
-if action == 22
+if action == consPlayerActionDamaged
 {
     sprp = spr_SuperSonic_hit
     if !(!ground && image_i == 4)
@@ -405,25 +405,25 @@ if action == 22
 }
 
 //light ring dash
-if action == 23
+if action == consPlayerActionLightRingDash
 {
     sprp = spr_SuperSonic_walljump
     frame += 0.5
 }
 
 //jump panel
-if action == 24
+if action == consPlayerActionJumpPanelJump
 {
     sprp = spr_SuperSonic_spinjump
     frame += 0.5
 }
-if action == 25
+if action == consPlayerActionJumpPanelLand
 {
     sprp = spr_SuperSonic_duck2
 }
 
 //dead
-if action == 26
+if action == consPlayerActionDead
 {
     sprp = spr_SuperSonic_dead1
     if !(!ground && image_i == 4)
@@ -433,21 +433,21 @@ if action == 26
 }
 
 //pulley grab and zipline
-if action == 27 || action == 32 || action == 32.5 || action == 33
+if action == consPlayerActionPulley || action == consPlayerActionZipLineStart || action == consPlayerActionZipLineTravel || action == consPlayerActionPullGrab
 {
     sprp = spr_SuperSonic_grab
     frame += 0.125
 }
 
 //pole
-if action == 29
+if action == consPlayerActionPole
 {
     sprp = spr_SuperSonic_pole
     frame += 0.25
 }
 
 //bungee
-if action == 30
+if action == consPlayerActionBungee
 {
     sprp = spr_SuperSonic_bungee
     frame += 0.25
@@ -456,7 +456,7 @@ if action == 30
 }
 
 //super form
-if action == 31
+if action == consPlayerActionSuperTransformation
 {
     sprp = spr_SuperSonic_transform
     frame += 0.25

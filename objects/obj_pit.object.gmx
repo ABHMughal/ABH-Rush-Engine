@@ -48,10 +48,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.action != 26
+            <string>if other.action != consPlayerActionDead
 {
     other.image_i = 0
-    other.action = 26
+    other.action = consPlayerActionDead
     other.canHit = false
     other.alarm3 = 120
     obj_player_camera.canFollow = false

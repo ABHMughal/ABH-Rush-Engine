@@ -1,5 +1,5 @@
 //qte time
-if action == 14
+if action == consPlayerActionQTE
 {
     grv = 0
     if xdir == 1
@@ -23,17 +23,17 @@ if action == 14
 }
 
 //qte success
-if action == 15
+if action == consPlayerActionQTESucces
 {
     hsp = xdir*9
     if ground
-        action = 0
+        action = consPlayerActionNormal
 }
 //qte fail
-if action == 15.5
+if action == consPlayerActionQTEFail
 {
     hsp += xdir*acc*2
     if ground 
-        action = 0
+        action = consPlayerActionNormal
 }
 

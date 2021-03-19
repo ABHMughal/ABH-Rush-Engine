@@ -1,10 +1,10 @@
 //dash ramp
-if action == 7
+if action == consPlayerActionDashRamp
 {
     hsp = 12*xdir
     if ground
     {
-        action = 0
+        action = consPlayerActionNormal
     }
 }
 

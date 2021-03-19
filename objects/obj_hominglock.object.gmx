@@ -56,13 +56,13 @@ audio_play_sound(snd_homing_target,1,false);
 else
     draw = true
 
-if obj_Sonic.action == 24 || obj_Sonic.action == 25
+if obj_Sonic.action == consPlayerActionJumpPanelJump || obj_Sonic.action == consPlayerActionJumpPanelLand
     instance_destroy()
     
 x = instance_nearest(x,y,obj_homable).x
 y = instance_nearest(x,y,obj_homable).y
 
-if obj_Sonic.action == 21
+if obj_Sonic.action == consPlayerAction4WayCanon
     instance_destroy()
 </string>
           </argument>

@@ -56,7 +56,7 @@ zombie = obj_zombie_monkey
             <string>var instance = instance_create(x,y - 10, zombie)
 with(instance)
 {
-    instance.action = 1
+    instance.action = consPlayerActionJump
     instance.image_index = 3
     instance.depth = self.depth - 1
 }

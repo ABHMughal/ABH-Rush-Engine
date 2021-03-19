@@ -85,11 +85,11 @@ alarm_amount = 30
     {    
         other.grv = 0
         other.alarm0 = alarm_amount
-        other.action = 6    
+        other.action = consPlayerActionDashRing    
     }
     else
     {
-        other.action = 5
+        other.action = consPlayerActionSpringJump
         if image_angle == 45 || image_angle == 135
         {   
             other.image_i = 0
@@ -145,18 +145,18 @@ alarm_amount = 30
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if activate &amp;&amp; other.action != 26
+            <string>if activate &amp;&amp; other.action != consPlayerActionDead
 {
     activate = false;
     if image_angle == 0 || image_angle == 180
     {    
         other.grv = 0
         other.alarm0 = alarm_amount
-        other.action = 6    
+        other.action = consPlayerActionDashRing    
     }
     else
     {
-        other.action = 5
+        other.action = consPlayerActionSpringJump
         other.image_i = 0;
         if image_angle == 45 || image_angle == 135
         {   
@@ -171,7 +171,7 @@ alarm_amount = 30
             if image_angle &lt; 0 &amp;&amp; image_angle &gt; -180
             {
                 other.image_i = 9
-                other.action = 0
+                other.action = consPlayerActionNormal
             }
             other.sprp = spr_Tails_jump
         }
@@ -222,17 +222,17 @@ alarm_amount = 30
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if activate &amp;&amp; other.action != 26
+            <string>if activate &amp;&amp; other.action != consPlayerActionDead
 {
     if image_angle == 0 || image_angle == 180
     {    
         other.grv = 0
         other.alarm0 = alarm_amount
-        other.action = 6    
+        other.action = consPlayerActionDashRing    
     }
     else
     {
-        other.action = 5
+        other.action = consPlayerActionSpringJump
         if obj_Sonic.character == "Sonic"
         {
             if image_angle == 45 || image_angle == 135

@@ -71,7 +71,7 @@ part_emit = part_emitter_create(part_sys);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_Sonic.action != 4
+            <string>if obj_Sonic.action != consPlayerActionHomingTarget
 {
     part_type_size(part,0.5,0.5,0,0);
     step += 1
@@ -94,7 +94,7 @@ else
 x = obj_Sonic.x;
 y = obj_Sonic.y;
 
-if (!obj_Sonic.key_boost &amp;&amp; obj_Sonic.action != 4) || obj_Sonic.action == 12 || obj_Sonic.action == 14
+if (!obj_Sonic.key_boost &amp;&amp; obj_Sonic.action != consPlayerActionHomingTarget) || obj_Sonic.action == consPlayerActionSwingBar || obj_Sonic.action == consPlayerActionQTE
     instance_destroy()
 </string>
           </argument>

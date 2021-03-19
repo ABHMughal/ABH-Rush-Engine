@@ -79,7 +79,7 @@ force_power = 6
 {
     other.ground = false
     other.vsp = -force_power
-    other.action = 0
+    other.action = consPlayerActionNormal
     other.angle = 0
     audio_play_sound(snd_classicspring,1,false)
 }

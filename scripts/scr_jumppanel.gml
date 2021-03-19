@@ -1,5 +1,5 @@
 //move towards jump panel 
-if action == 24
+if action == consPlayerActionJumpPanelJump
 {
     hsp = 0
     vsp = 0
@@ -46,13 +46,13 @@ if action == 24
     }
     if ground || place_meeting(x,y,obj_jumppanel_end)
     {
-        action = 0
+        action = consPlayerActionNormal
         hsp = xdir*5   
         jumppanel = 1
     }
 }
 //stick to jump panel
-if action == 25
+if action == consPlayerActionJumpPanelLand
 {
     hspeed = 0
     vspeed = 0

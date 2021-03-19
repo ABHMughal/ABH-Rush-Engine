@@ -1,5 +1,5 @@
 //jumping
-if key_jump && ground && (action == -4 || action == 0 || action == 2 || action == 9 || action == 11)
+if key_jump && ground && (action == consPlayerActionSkid || action == consPlayerActionNormal || action == consPlayerActionRoll || action == consPlayerActionSlide || action == consPlayerActionGrinding)
 {
     ground = false;
     vsp = acos*jmp + (-asin*hsp)/1.5;
@@ -7,7 +7,7 @@ if key_jump && ground && (action == -4 || action == 0 || action == 2 || action =
     angle = 0;
     acos = 1;
     asin = 0;
-    action = 1;
+    action = consPlayerActionJump;
     
     if !instance_exists(obj_jumpfx) && character != "Tails"
         instance_create(x,y,obj_jumpfx)
@@ -15,12 +15,12 @@ if key_jump && ground && (action == -4 || action == 0 || action == 2 || action =
     audio_play_sound(snd_jump,1,false);
 }
 //small jump
-if key_jumpr && vsp < sjmp && action == 1
+if key_jumpr && vsp < sjmp && action == consPlayerActionJump
 {
     vsp = sjmp;
 }
 
-if action == 1 && !ground
+if action == consPlayerActionJump && !ground
 {
     if key_r
         {
@@ -54,7 +54,7 @@ if action == 1 && !ground
 }
 
 //landing
-if canMove && (action != 0 || (action == 0 && (sprp == spr_Sonic_fall || sprp == spr_Shadow_jump) && vsp > 1)) && action > -1 && action != 2 && action != 16 && action != 17 && action != 8 && action != 9 && action != 22 && action != 26 && action != 34 && ground && collision_line(x,y,x+20*asin,y+20*acos,obj_walls,true,true)
+if canMove && (action != consPlayerActionNormal || (action == consPlayerActionNormal && (sprp == spr_Sonic_fall || sprp == spr_Shadow_jump) && vsp > 1)) && action > consPlayerActionDuck && action != consPlayerActionRoll && action != consPlayerActionCorkscrew && action != consPlayerActionCorkscrewRoll && action != consPlayerActionDashPad && action != consPlayerActionSlide && action != consPlayerActionDamaged && action != consPlayerActionDead && action != consPlayerActionAutoTunnel && ground && collision_line(x,y,x+20*asin,y+20*acos,obj_walls,true,true)
 {    
     if collision_line(x,y,x,y+20,obj_glass_wall,true,true)
     || (collision_line(x,y,x+20*asin,y+20*acos,obj_bwalls_glass,true,true) && xlayer == 0) 
@@ -90,8 +90,8 @@ if canMove && (action != 0 || (action == 0 && (sprp == spr_Sonic_fall || sprp ==
         audio_play_sound(snd_land,1,0)
 
 }
-if ground && (action == 1)
+if ground && (action == consPlayerActionJump)
 {
-    action = 0;
+    action = consPlayerActionNormal;
 }
 

@@ -114,13 +114,13 @@ while(collision_script_left(mask))
 
 if !ground
 {
-    if character == "Tails" && (action == 4 || action == 4.5)
+    if character == "Tails" && (action == consPlayerActionHomingTarget || action == consPlayerActionHomingNoTarget)
         vsp += 0.03125
     else 
         vsp += grv;
 }
 ///angle speed
-if angle > 70 && angle < 290 && abs(hsp) < 1.5 && action != 11
+if angle > 70 && angle < 290 && abs(hsp) < 1.5 && action != consPlayerActionGrinding
 {
     x -= asin*5
     y -= acos*5
@@ -131,9 +131,9 @@ if angle > 70 && angle < 290 && abs(hsp) < 1.5 && action != 11
 }
 
 ///slope factor
-if action = 0 slp =0.125;
-if action = 2 {if sign(hsp) = sign(asin) slp=0.078125; if sign(hsp) != sign(asin) slp =0.3125;}
-if (action >= 0 && (hsp < hspl && hsp > -hspl )) 
+if action = consPlayerActionNormal slp =0.125;
+if action = consPlayerActionRoll {if sign(hsp) = sign(asin) slp=0.078125; if sign(hsp) != sign(asin) slp =0.3125;}
+if (action >= consPlayerActionNormal && (hsp < hspl && hsp > -hspl )) 
 {    
     hsp -= slp*asin;
 }
@@ -153,14 +153,14 @@ if !ground && collision_script_top(mask) && vsp < 0
     var check_angle = find_angle(180,mask,25)
     if (check_angle >= 135 && check_angle <= 170)
     {
-        action = 0
+        action = consPlayerActionNormal
         angle = check_angle
         hsp = -vsp
         vsp = 0
     }
     else if (check_angle >= 190 && check_angle <= 225)
     {
-        action = 0
+        action = consPlayerActionNormal
         angle = check_angle
         hsp = vsp
         vsp = 0

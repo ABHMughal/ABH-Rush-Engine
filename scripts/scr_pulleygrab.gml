@@ -1,5 +1,5 @@
 //pulley grab
-if action == 27
+if action == consPlayerActionPulley
 {
     x = instance_nearest(x,y,obj_pulleyhandle).x
     y = instance_nearest(x,y,obj_pulleyhandle).y + instance_nearest(x,y,obj_pulleyhandle).vspeed

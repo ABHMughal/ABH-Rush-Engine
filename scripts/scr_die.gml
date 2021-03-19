@@ -1,5 +1,5 @@
 //dead
-if action == 26
+if action == consPlayerActionDead
 {
     if ground
     {

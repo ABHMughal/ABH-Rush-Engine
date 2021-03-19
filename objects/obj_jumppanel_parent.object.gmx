@@ -72,11 +72,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if other.action == 24 &amp;&amp; activate
+            <string>if other.action == consPlayerActionJumpPanelJump &amp;&amp; activate
 {
     activate = false
     other.i_angle = image_angle
-    other.action = 25
+    other.action = consPlayerActionJumpPanelLand
     instance_create(x,y,obj_qte_button_jumppanel)
     audio_play_sound(snd_jumppanel_attached,1,false)
 }

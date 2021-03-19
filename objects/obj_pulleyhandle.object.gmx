@@ -57,7 +57,7 @@ y_default = y
             <string>if !place_meeting(x,y,obj_Sonic)
     activate = false
     
-if activate &amp;&amp; obj_Sonic.action == 27
+if activate &amp;&amp; obj_Sonic.action == consPlayerActionPulley
 {
     if vspeed &gt;= -8
         vspeed -= 0.25
@@ -92,7 +92,7 @@ else if !activate &amp;&amp; y &lt; y_default
             <kind>1</kind>
             <string>if activate
 {
-    obj_Sonic.action = 0
+    obj_Sonic.action = consPlayerActionNormal
     obj_Sonic.vsp = -force_power
     vspeed = 0
     if audio_is_playing(snd_zipline)
@@ -120,7 +120,7 @@ else if !activate &amp;&amp; y &lt; y_default
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !place_meeting(x,y,obj_pulleyend) &amp;&amp; other.action != 26
+            <string>if !place_meeting(x,y,obj_pulleyend) &amp;&amp; other.action != consPlayerActionDead
 {
     if activate == false
     {
@@ -128,7 +128,7 @@ else if !activate &amp;&amp; y &lt; y_default
         audio_play_sound(snd_zipline,1,false)
     }
     activate = true
-    other.action = 27
+    other.action = consPlayerActionPulley
     other.xdir = image_xscale
     if instance_exists(obj_hominglock)
     {

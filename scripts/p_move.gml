@@ -9,7 +9,7 @@ if key_boost
 if key_boostr
     boosting = false
 
-if boosting && (((action == 0 || action == 11) && ground) || action == 1 || action == 16)
+if boosting && (((action == consPlayerActionNormal || action == consPlayerActionGrinding) && ground) || action == consPlayerActionJump || action == consPlayerActionCorkscrew)
 {
     if !instance_exists(obj_boostfx) && boostamount > 0
     {
@@ -35,7 +35,7 @@ else
     
     currhsph = hspm
     
-    if action != 2
+    if action != consPlayerActionRoll
     {
         if hsp > hspm
             hsp = hspm
@@ -63,7 +63,7 @@ if instance_exists(obj_boostfx)
 }
 
 //skidding
-if action == 0 && ground
+if action == consPlayerActionNormal && ground
 {
     if (xdir == 1 && key_l && hsp >= 3 ) || (xdir == -1 && key_r && hsp <= -3)// abs(hsp) > 3
     {
@@ -98,12 +98,12 @@ if action == 0 && ground
             audio_play_sound(snd_skid_dirt,1,0)
         else
             audio_play_sound(snd_skidhigh,1,0)
-        action = -4
+        action = consPlayerActionSkid
         image_i = 0
          
     }
 }
-if action == -4 
+if action == consPlayerActionSkid 
 {
     if hsp > 1
         hsp -= dcc/4
@@ -116,25 +116,25 @@ if action == -4
         hsp += dcc/3
     
     if (xdir == 1 && key_r && !key_l) || (xdir == -1 && key_l && !key_r)
-        action = 0
+        action = consPlayerActionNormal
         
     if abs(hsp) <= 1 || !ground
     {
-        action = 0
+        action = consPlayerActionNormal
         xdir = -xdir
     }
 }
 
 //direction
 
-if action = 0 //&&  !instance_exists(obj_boostfx)
+if action = consPlayerActionNormal //&&  !instance_exists(obj_boostfx)
 {
     if key_l xdir = -1;
     if key_r xdir =  1;
 }
 
 ///movment
-if (action == 0 || action == 1 || action == 16)
+if (action == consPlayerActionNormal || action == consPlayerActionJump || action == consPlayerActionCorkscrew)
 {
     if ground{
         if key_r
@@ -177,7 +177,7 @@ if (action == 0 || action == 1 || action == 16)
     }
 }
 //ground spin
-if action == 2
+if action == consPlayerActionRoll
 {
     if ground{
         if hsp > bfr {hsp-=bfr;if key_l hsp-=bdcc}
@@ -194,7 +194,7 @@ if action == 2
 }
 
 //jumping
-if key_jump && ground && (action == -4 || action == 0 || action == 2 || action == 9 || action == 11)
+if key_jump && ground && (action == consPlayerActionSkid || action == consPlayerActionNormal || action == consPlayerActionRoll || action == consPlayerActionSlide || action == consPlayerActionGrinding)
 {
     ground = false;
     vsp = acos*jmp + (-asin*hsp)/1.5;
@@ -202,7 +202,7 @@ if key_jump && ground && (action == -4 || action == 0 || action == 2 || action =
     angle = 0;
     acos = 1;
     asin = 0;
-    action = 1;
+    action = consPlayerActionJump;
     
     if !instance_exists(obj_jumpfx)
         instance_create(x,y,obj_jumpfx)
@@ -210,12 +210,12 @@ if key_jump && ground && (action == -4 || action == 0 || action == 2 || action =
     audio_play_sound(snd_jump,1,false);
 }
 //small jump
-if key_jumpr && vsp < sjmp && action == 1
+if key_jumpr && vsp < sjmp && action == consPlayerActionJump
 {
     vsp = sjmp;
 }
 
-if action == 1 && !ground
+if action == consPlayerActionJump && !ground
 {
     if key_r
         {
@@ -249,7 +249,7 @@ if action == 1 && !ground
 }
 
 //landing
-if canMove && (action != 0 || (action == 0 && (sprp == spr_Sonic_fall || sprp == spr_Shadow_jump) && vsp > 1)) && action > -1 && action != 2 && action != 16 && action != 17 && action != 8 && action != 9 && action != 22 && action != 26 && action != 34 && ground && collision_line(x,y,x+20*asin,y+20*acos,obj_walls,true,true)
+if canMove && (action != consPlayerActionNormal || (action == consPlayerActionNormal && (sprp == spr_Sonic_fall || sprp == spr_Shadow_jump) && vsp > 1)) && action > consPlayerActionDuck && action != consPlayerActionRoll && action != consPlayerActionCorkscrew && action != consPlayerActionCorkscrewRoll && action != consPlayerActionDashPad && action != consPlayerActionSlide && action != consPlayerActionDamaged && action != consPlayerActionDead && action != consPlayerActionAutoTunnel && ground && collision_line(x,y,x+20*asin,y+20*acos,obj_walls,true,true)
 {    
     if collision_line(x,y,x,y+20,obj_glass_wall,true,true)
     || (collision_line(x,y,x+20*asin,y+20*acos,obj_bwalls_glass,true,true) && xlayer == 0) 
@@ -285,52 +285,52 @@ if canMove && (action != 0 || (action == 0 && (sprp == spr_Sonic_fall || sprp ==
         audio_play_sound(snd_land,1,0)
 
 }
-if ground && (action == 1)
+if ground && (action == consPlayerActionJump)
 {
-    action = 0;
+    action = consPlayerActionNormal;
 }
 
 //if ground && !canWallJump
 //    canWallJump = true
     
 //rolling ducking
-if key_d && ground && (action == 0 || action == 1)
+if key_d && ground && (action == consPlayerActionNormal || action == consPlayerActionJump)
 {
-    if abs(hsp) < 1.03125 {hsp=0; action = -1; image_i = 0}
-    if abs(hsp) >= 1.03125 {action = 2; audio_play_sound(snd_roll,1,false)}    
+    if abs(hsp) < 1.03125 {hsp=0; action = consPlayerActionDuck; image_i = 0}
+    if abs(hsp) >= 1.03125 {action = consPlayerActionRoll; audio_play_sound(snd_roll,1,false)}    
 }
 
 
-if action == -1 && !key_d && image_i >= 5{action=0;}///un duck
-if action == 2 && abs(hsp) < 0.5 && ground {action =0;}///un roll
-if action == 2 && vsp > 0 && !ground && collision_script_ground(14)//un roll on ground
-{action = 0;}
+if action == consPlayerActionDuck && !key_d && image_i >= 5{action=consPlayerActionNormal;}///un duck
+if action == consPlayerActionRoll && abs(hsp) < 0.5 && ground {action =consPlayerActionNormal;}///un roll
+if action == consPlayerActionRoll && vsp > 0 && !ground && collision_script_ground(14)//un roll on ground
+{action = consPlayerActionNormal;}
 
 //looking up
-if key_u && ground && action =0
+if key_u && ground && action =consPlayerActionNormal
 {
-    if abs(hsp) < 0.2 {hsp =0;action =-3; image_i = 0};
+    if abs(hsp) < 0.2 {hsp =0;action =consPlayerActionLookUp; image_i = 0};
 }
-if (!key_u||!ground||key_r||key_l)&& (action=-3 && image_i >= 5)
-    action=0;
+if (!key_u||!ground||key_r||key_l)&& (action=consPlayerActionLookUp && image_i >= 5)
+    action=consPlayerActionNormal;
 
 
 //spin dash
 if sp > 0 {sp = sp-((sp div 1)/265)}
 if sp > 192 sp = 192;
-if action = -2 && key_jump {sp+=8;audio_play_sound(snd_spindash,1,false)}
-if action = -2 && !key_d {hsp = xdir*9+(xdir*floor(sp)/8);action = 2; sp =0;audio_play_sound(snd_spindash_launch,1,false)}
-if action =-1 && key_jump 
+if action = consPlayerActionSpindashCharge && key_jump {sp+=8;audio_play_sound(snd_spindash,1,false)}
+if action = consPlayerActionSpindashCharge && !key_d {hsp = xdir*9+(xdir*floor(sp)/8);action = consPlayerActionRoll; sp =0;audio_play_sound(snd_spindash_launch,1,false)}
+if action =consPlayerActionDuck && key_jump 
 {
     sp = 0;
-    action = -2; 
+    action = consPlayerActionSpindashCharge; 
     image_i = 0
     audio_play_sound(snd_spindash,1,false)
     instance_create(x,y,obj_spindash_dust)
 }
 
 //homing attack
-if (action == 1 || (action == 0 && !ground) || action == 13) // || (action == 5 && hsp == 0))
+if (action == consPlayerActionJump || (action == consPlayerActionNormal && !ground) || action == consPlayerActionSwingBarJump) // || (action == consPlayerActionSpringJump && hsp == 0))
 {
     canHome = true   
 }
@@ -353,7 +353,7 @@ else if distance_to_object(instance_nearest(x,y,obj_homable)) > 200 || ground ||
         }
 }
 
-if (action == 1 && djmp && key_jumpr) || (action == 0 && !ground) || action == 5
+if (action == consPlayerActionJump && djmp && key_jumpr) || (action == consPlayerActionNormal && !ground) || action == consPlayerActionSpringJump
     djmp = false
     
 
@@ -361,9 +361,9 @@ if instance_exists(obj_hominglock)
 {
     if key_jump && !djmp
     {
-        if action != 4
+        if action != consPlayerActionHomingTarget
             audio_play_sound(snd_homing,1,false);
-        action = 4
+        action = consPlayerActionHomingTarget
         hsp = 0
         vsp = 0
         move_towards_point(obj_hominglock.x,obj_hominglock.y,20);
@@ -371,16 +371,16 @@ if instance_exists(obj_hominglock)
 }
 else
 {
-    if key_jump && !ground && (action == 1 || action == 0) && !djmp && djmp2
+    if key_jump && !ground && (action == consPlayerActionJump || action == consPlayerActionNormal) && !djmp && djmp2
     {
-        if action != 4.5
+        if action != consPlayerActionHomingNoTarget
         {
             if character == "Sonic"
                 audio_play_sound(snd_homing,1,false);
             else if character == "Shadow"
                 audio_play_sound(snd_Shadow_Warp,1,false);
         }
-        action = 4.5
+        action = consPlayerActionHomingNoTarget
         hsp = xdir*9
         vsp = 0
         alarm2 = 15
@@ -388,9 +388,9 @@ else
         djmp2 = false
         image_i = 0
     }
-    else if action = 4.5 && ground
+    else if action = consPlayerActionHomingNoTarget && ground
     {
-        action=0
+        action=consPlayerActionNormal
         alarm2 = 0
         djmp = false
         jmp2 = false
@@ -404,13 +404,13 @@ if !djmp2 && ground
     djmp2 = true
     
     
-if action == 4.5
+if action == consPlayerActionHomingNoTarget
 {
     hsp = xdir*12
     vsp = 0
 }
 
-if action == 4 && instance_exists(obj_hominglock)
+if action == consPlayerActionHomingTarget && instance_exists(obj_hominglock)
 {
     move_towards_point(obj_hominglock.x,obj_hominglock.y,20);
 }
@@ -420,13 +420,13 @@ else
     hspeed = 0;
 }
 
-if action == 4 && (place_meeting(x,y,obj_walls) || ground) 
-    action = 0
+if action == consPlayerActionHomingTarget && (place_meeting(x,y,obj_walls) || ground) 
+    action = consPlayerActionNormal
 
-//after homing attack trick is action 10 which is not controlled here, however djmp2 is controlled in draw event 
+//after homing attack trick is action consPlayerActionTrick which is not controlled here, however djmp2 is controlled in draw event 
     
 // spring jump and dash ring
-if (action == 5 || action == 6)
+if (action == consPlayerActionSpringJump || action == consPlayerActionDashRing)
 {
     if hsp > 0
         xdir = 1;
@@ -434,19 +434,19 @@ if (action == 5 || action == 6)
         xdir = -1;
         
     if ground
-        action = 0;
+        action = consPlayerActionNormal;
 } 
 
 //dash ramp
-if action == 7
+if action == consPlayerActionDashRamp
 {
     hsp = 12*xdir
     if ground
-        action = 0
+        action = consPlayerActionNormal
 }
 
 //dash pad
-if action == 8
+if action == consPlayerActionDashPad
 {
     if hsp > 0
         hsp = hspl
@@ -457,13 +457,13 @@ if action == 8
 //slide
 if character == "Sonic"
 {
-    if ground && action == 0 && abs(hsp) >= 3 && key_attack
+    if ground && action == consPlayerActionNormal && abs(hsp) >= 3 && key_attack
     {
         sprp = spr_Sonic_jog
-        action = 9
+        action = consPlayerActionSlide
         audio_play_sound(snd_SonicAttack3,1,false)
     }     
-    if action == 9
+    if action == consPlayerActionSlide
     {
         if xdir == 1 && key_l
             hsp -= dcc
@@ -475,23 +475,23 @@ if character == "Sonic"
             hsp+=frc;
     
         if abs(hsp) < 1 || !ground
-            action = 0
+            action = consPlayerActionNormal
         if  !key_attack
-            action = 2        
+            action = consPlayerActionRoll        
     }
 }
 else if character == "Shadow"
 {
-    if ground && action == 0 && key_attack_p
+    if ground && action == consPlayerActionNormal && key_attack_p
     {
         image_i = 0
         if abs(hsp) < 10
             hsp = 10*xdir 
-        action = 9
+        action = consPlayerActionSlide
         audio_play_sound(snd_Shadow_Homing2,1,false)
         audio_play_sound(snd_Shadow_Warp,1,false)
     }     
-    if action == 9
+    if action == consPlayerActionSlide
     {
         if hsp > 0 
             hsp-=frc; 
@@ -499,7 +499,7 @@ else if character == "Shadow"
             hsp+=frc;
     
         if image_i >= 24 || !ground
-            action = 0        
+            action = consPlayerActionNormal        
     }      
 }
 
@@ -512,20 +512,20 @@ else
 
 if canGrind && ground && collision_line(x,y,x+20*asin,y+20*acos,obj_rail,true,true)  //collision_point(x+16*asin,y+16*acos,obj_rail,true,true)
 {
-    if action == 2
-        action = 0
+    if action == consPlayerActionRoll
+        action = consPlayerActionNormal
         
-    if action != 11
+    if action != consPlayerActionGrinding
     {
         audio_play_sound(snd_railcontact,1,false)
         if !instance_exists(obj_grindspark)
             instance_create(x,y,obj_grindspark)
     }
-    action = 11    
+    action = consPlayerActionGrinding    
 }
 
 
-if action == 11
+if action == consPlayerActionGrinding
 {
     if !audio_is_playing(snd_grinding)
         audio_play_sound(snd_grinding,1,false)
@@ -540,14 +540,14 @@ if action == 11
         hsp = hspl*xdir
     hsp += -asin*(dcc/6)
     if !ground  || !collision_line(x,y,x+20*asin,y+20*acos,obj_rail,true,true)   
-        action = 0
+        action = consPlayerActionNormal
 }
-if action != 11 && action != 32 && action != 32.5 && audio_is_playing(snd_grinding)
+if action != consPlayerActionGrinding && action != consPlayerActionZipLineStart && action != consPlayerActionZipLineTravel && audio_is_playing(snd_grinding)
     audio_stop_sound(snd_grinding)
 
     
 //swingbar
-if action == 12
+if action == consPlayerActionSwingBar
 {
     x = instance_nearest(x,y,obj_swingbar).x
     y = instance_nearest(x,y,obj_swingbar).y
@@ -557,26 +557,26 @@ if action == 12
     if key_jump && (image_i % 15 >= 0 && image_i % 15 < 5)   
     {
         audio_play_sound(snd_spin,1,false)
-        action = 13
+        action = consPlayerActionSwingBarJump
         vsp = -8
         hsp = xdir*10
     }
     else if key_jump
     {
-        action = 0
+        action = consPlayerActionNormal
         y += 10
     }
 }
 
 //swingbar end
-if action == 13
+if action == consPlayerActionSwingBarJump
 {
     if vsp >= 2 || ground
-        action = 0
+        action = consPlayerActionNormal
 }
 
 //qte time
-if action == 14
+if action == consPlayerActionQTE
 {
     grv = 0
     if xdir == 1
@@ -600,47 +600,47 @@ if action == 14
 }
 
 //qte success
-if action == 15
+if action == consPlayerActionQTESucces
 {
     hsp = xdir*9
     if ground
-        action = 0
+        action = consPlayerActionNormal
 }
 //qte fail
-if action == 15.5
+if action == consPlayerActionQTEFail
 {
     hsp += xdir*acc*2
     if ground 
-        action = 0
+        action = consPlayerActionNormal
 }
 
 //corkscrew movement (main movement is in corkscrew object)
-if action == 16
+if action == consPlayerActionCorkscrew
 {
     vsp = 0
     angle = 0
     if ground || abs(obj_Sonic.hsp) < 4
     {
-        action = 0
+        action = consPlayerActionNormal
         image_i = 0
     }
     
 }
 
-if action == 17 // corkscrew while rolling
+if action == consPlayerActionCorkscrewRoll // corkscrew while rolling
 {
     vsp = 0
     angle = 0
     if ground || abs(obj_Sonic.hsp) < 4
     {
-        action = 2
+        action = consPlayerActionRoll
         image_i = 0
     }
 }
 //stomp
-if (action == 0 || action == 1) && !ground && key_d && key_attack
+if (action == consPlayerActionNormal || action == consPlayerActionJump) && !ground && key_d && key_attack
 {
-    action = 18
+    action = consPlayerActionStomp
     audio_play_sound(snd_stomp_start,1,false);
     instance_create(x,y,obj_stompfx);
     if character == "Sonic"
@@ -648,7 +648,7 @@ if (action == 0 || action == 1) && !ground && key_d && key_attack
     else if character == "Shadow"
         audio_play_sound(snd_Shadow_Homing2,1,false);
 }
-if action == 18
+if action == consPlayerActionStomp
 {
     vsp = vspl
     hsp = 0
@@ -659,15 +659,15 @@ if action == 18
         if audio_is_playing(snd_stomp_start)
             audio_stop_sound(snd_stomp_start)
         audio_play_sound(snd_stomp_end,1,false)
-        action = 0
+        action = consPlayerActionNormal
         vsp = 0
     }
 }
-if action != 18 && audio_is_playing(snd_stomp_start)
+if action != consPlayerActionStomp && audio_is_playing(snd_stomp_start)
     audio_stop_sound(snd_stomp_start)
 
 //wallhang and walljump (made basics of it but has some bugs on it so I didn't try to fix it)
-if action == 19
+if action == consPlayerActionWallHang
 {
     vsp = 0
     hsp = 0
@@ -676,20 +676,20 @@ if action == 19
     {
         alarm[2] = 0
         xdir = -xdir
-        action = 20
+        action = consPlayerActionWallJump
         vsp = -7
         hsp = 9*xdir
         audio_play_sound(snd_jump,1,false)
     }
 }
-if action == 20
+if action == consPlayerActionWallJump
 {
     if ground || vsp >= 0
-        action = 0
+        action = consPlayerActionNormal
 }
 
 //4 way canon
-if action == 21
+if action == consPlayerAction4WayCanon
 {
     vsp = 0
     hsp = 0
@@ -699,7 +699,7 @@ if action == 21
         if key_u
         {
             vsp = -10
-            action = 0
+            action = consPlayerActionNormal
             audio_play_sound(snd_4waycanon_blast,1,false)
             audio_play_sound(snd_rainbowring,1,false)
         }
@@ -708,7 +708,7 @@ if action == 21
             alarm0 = 30
             grv = 0
             hsp = 9
-            action = 6
+            action = consPlayerActionDashRing
             audio_play_sound(snd_4waycanon_blast,1,false)
             audio_play_sound(snd_rainbowring,1,false)
         }
@@ -717,14 +717,14 @@ if action == 21
             alarm0 = 30
             grv = 0
             hsp = -9
-            action = 6    
+            action = consPlayerActionDashRing    
             audio_play_sound(snd_4waycanon_blast,1,false)
             audio_play_sound(snd_rainbowring,1,false)
         }
         else if key_d
         {
             vsp = 10
-            action = 0
+            action = consPlayerActionNormal
             audio_play_sound(snd_4waycanon_blast,1,false)
             audio_play_sound(snd_rainbowring,1,false)
         }
@@ -732,7 +732,7 @@ if action == 21
 }
 
 //taking damage
-if action == 22
+if action == consPlayerActionDamaged
 {
     if ground
     {    
@@ -742,16 +742,16 @@ if action == 22
     if image_i >= 21
     {
         image_i = 0
-        action = 0
+        action = consPlayerActionNormal
     }
 }
 
 //light ring dash
 
 if distance_to_object(instance_nearest(x,y,obj_lightrings)) <= 20 && key_special
-    action = 23
+    action = consPlayerActionLightRingDash
 
-if action == 23
+if action == consPlayerActionLightRingDash
 {
     if instance_exists(obj_lightrings) && distance_to_object(instance_nearest(x,y,obj_lightrings)) <= 50
     {    
@@ -769,13 +769,13 @@ if action == 23
           
         hsp = xdir*9*cos(i_angle)
         vsp = 9*sin(i_angle)
-        action = 0
+        action = consPlayerActionNormal
         hspeed = 0
         vspeed = 0
     }
 }
 //move towards jump panel 
-if action == 24
+if action == consPlayerActionJumpPanelJump
 {
     hsp = 0
     vsp = 0
@@ -822,13 +822,13 @@ if action == 24
     }
     if ground || place_meeting(x,y,obj_jumppanel_end)
     {
-        action = 0
+        action = consPlayerActionNormal
         hsp = xdir*5   
         jumppanel = 1
     }
 }
 //stick to jump panel
-if action == 25
+if action == consPlayerActionJumpPanelLand
 {
     hspeed = 0
     vspeed = 0
@@ -839,7 +839,7 @@ if action == 25
 }
 
 //dead
-if action == 26
+if action == consPlayerActionDead
 {
     if ground
     {
@@ -849,7 +849,7 @@ if action == 26
 }
 
 //pulley grab
-if action == 27
+if action == consPlayerActionPulley
 {
     x = instance_nearest(x,y,obj_pulleyhandle).x
     y = instance_nearest(x,y,obj_pulleyhandle).y + instance_nearest(x,y,obj_pulleyhandle).vspeed
@@ -861,22 +861,22 @@ if action == 27
 /*
 if character == "Shadow"
 {
-    if key_special && action == 1 && !ground && abs(hsp) <= 2 && boostamount >= 25
+    if key_special && action == consPlayerActionJump && !ground && abs(hsp) <= 2 && boostamount >= 25
     {
         image_i = 0
-        action = 28 
+        action = consPlayerActionChaosControl 
         audio_play_sound(snd_Shadow_Shoot,1,false)
         //shader_set(shader_ColourInverse)
     }
 }
 //chaos slow motion (unfinished)
-if action = 28
+if action = consPlayerActionChaosControl
 {
     vsp = 0
     hsp = 0
     if image_i == 4
     {
-        action = 0
+        action = consPlayerActionNormal
         boostamount -= 25
         room_speed = 30
         alarm4 = 300
@@ -885,7 +885,7 @@ if action = 28
 */
 
 //pole
-if action == 29
+if action == consPlayerActionPole
 {
     if place_meeting(x,y,obj_pole)
     {
@@ -897,7 +897,7 @@ if action == 29
         
         if key_jump
         {
-            action = 1
+            action = consPlayerActionJump
             if key_r
                 hsp = 7
             else if key_l 
@@ -908,11 +908,11 @@ if action == 29
         }
     }
     else
-        action = 0
+        action = consPlayerActionNormal
 }
 
 //bungee
-if action == 30
+if action == consPlayerActionBungee
 {
     hsp = 0
     vsp -= 0.5
@@ -920,19 +920,19 @@ if action == 30
 
 //super transformation
 
-if !ground && action == 1 && key_special && rings >= 50 && !super
+if !ground && action == consPlayerActionJump && key_special && rings >= 50 && !super
 {
     super = true
     image_i = 0 
-    action = 31    
+    action = consPlayerActionSuperTransformation    
 }
 
-if action == 31
+if action == consPlayerActionSuperTransformation
 {
     hsp = 0
     vsp = 0
     if image_i >= 16
-        action = 0   
+        action = consPlayerActionNormal   
 }
 
 if super && rings <= 0
@@ -943,14 +943,14 @@ if super && rings <= 0
 
 
 //zipline
-if action == 32
+if action == consPlayerActionZipLineStart
 {
     xdir = 1
     vsp = 0
     y = instance_nearest(x,y,obj_zipline_pre).y + 2
     hsp += 0.125
 }
-if action == 32.5
+if action == consPlayerActionZipLineTravel
 {
     hsp = 0
     vsp = 0
@@ -962,7 +962,7 @@ if action == 32.5
 }
 
 //pull grab pole
-if action == 33
+if action == consPlayerActionPullGrab
 {
     vsp = 0
     hsp = 0
@@ -970,7 +970,7 @@ if action == 33
 
 //auto-tunnel movement
 
-if action == 34
+if action == consPlayerActionAutoTunnel
 {
     hsp = 12
     ground = true

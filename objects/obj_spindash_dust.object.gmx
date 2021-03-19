@@ -52,7 +52,7 @@ image_speed = 0.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_Sonic.action != -2
+            <string>if obj_Sonic.action != consPlayerActionSpindashCharge
     instance_destroy()
     
 x = obj_Sonic.x

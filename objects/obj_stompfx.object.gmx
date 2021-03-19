@@ -62,7 +62,7 @@ if !obj_Sonic.super
 else
     sprite_index = spr_stomp_super
     
-if obj_Sonic.action != 18
+if obj_Sonic.action != consPlayerActionStomp
     instance_destroy()
 </string>
           </argument>

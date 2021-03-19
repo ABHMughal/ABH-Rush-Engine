@@ -1,7 +1,7 @@
 //stomp
-if (action == 0 || action == 1) && !ground && key_d && key_attack
+if (action == consPlayerActionNormal || action == consPlayerActionJump) && !ground && key_d && key_attack
 {
-    action = 18
+    action = consPlayerActionStomp
     audio_play_sound(snd_stomp_start,1,false);
     instance_create(x,y,obj_stompfx);
     if character == "Sonic"
@@ -9,7 +9,7 @@ if (action == 0 || action == 1) && !ground && key_d && key_attack
     else if character == "Shadow"
         audio_play_sound(snd_Shadow_Homing2,1,false);
 }
-if action == 18
+if action == consPlayerActionStomp
 {
     vsp = vspl
     hsp = 0
@@ -20,10 +20,10 @@ if action == 18
         if audio_is_playing(snd_stomp_start)
             audio_stop_sound(snd_stomp_start)
         audio_play_sound(snd_stomp_end,1,false)
-        action = 0
+        action = consPlayerActionNormal
         vsp = 0
     }
 }
-if action != 18 && audio_is_playing(snd_stomp_start)
+if action != consPlayerActionStomp && audio_is_playing(snd_stomp_start)
     audio_stop_sound(snd_stomp_start)
 

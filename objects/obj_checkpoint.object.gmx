@@ -79,7 +79,7 @@ if state == 3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if state == 1 &amp;&amp; other.action != 26
+            <string>if state == 1 &amp;&amp; other.action != consPlayerActionDead
 {
     state = 2
     image_index = 0

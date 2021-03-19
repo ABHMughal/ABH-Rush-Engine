@@ -1,12 +1,12 @@
 //zipline
-if action == 32
+if action == consPlayerActionZipLineStart
 {
     xdir = 1
     vsp = 0
     y = instance_nearest(x,y,obj_zipline_pre).y + 2
     hsp += 0.125
 }
-if action == 32.5
+if action == consPlayerActionZipLineTravel
 {
     hsp = 0
     vsp = 0

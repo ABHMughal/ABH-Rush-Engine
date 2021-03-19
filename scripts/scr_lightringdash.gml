@@ -1,9 +1,9 @@
 //light ring dash
 
 if distance_to_object(instance_nearest(x,y,obj_lightrings)) <= 20 && key_special
-    action = 23
+    action = consPlayerActionLightRingDash
 
-if action == 23
+if action == consPlayerActionLightRingDash
 {
     if instance_exists(obj_lightrings) && distance_to_object(instance_nearest(x,y,obj_lightrings)) <= 50
     {    
@@ -21,7 +21,7 @@ if action == 23
           
         hsp = xdir*9*cos(i_angle)
         vsp = 9*sin(i_angle)
-        action = 0
+        action = consPlayerActionNormal
         hspeed = 0
         vspeed = 0
     }

@@ -1,13 +1,13 @@
 //slide
 if character == "Sonic"
 {
-    if ground && action == 0 && abs(hsp) >= 3 && key_attack
+    if ground && action == consPlayerActionNormal && abs(hsp) >= 3 && key_attack
     {
         sprp = spr_Sonic_jog
-        action = 9
+        action = consPlayerActionSlide
         audio_play_sound(snd_SonicAttack3,1,false)
     }     
-    if action == 9
+    if action == consPlayerActionSlide
     {
         if xdir == 1 && key_l
             hsp -= dcc
@@ -19,23 +19,23 @@ if character == "Sonic"
             hsp+=frc;
     
         if abs(hsp) < 1 || !ground
-            action = 0
+            action = consPlayerActionNormal
         if  !key_attack
-            action = 2        
+            action = consPlayerActionRoll        
     }
 }
 else if character == "Shadow"
 {
-    if ground && action == 0 && key_attack_p
+    if ground && action == consPlayerActionNormal && key_attack_p
     {
         image_i = 0
         if abs(hsp) < 10
             hsp = 10*xdir 
-        action = 9
+        action = consPlayerActionSlide
         audio_play_sound(snd_Shadow_Homing2,1,false)
         audio_play_sound(snd_Shadow_Warp,1,false)
     }     
-    if action == 9
+    if action == consPlayerActionSlide
     {
         if hsp > 0 
             hsp-=frc; 
@@ -43,7 +43,7 @@ else if character == "Shadow"
             hsp+=frc;
     
         if image_i >= 24 || !ground
-            action = 0        
+            action = consPlayerActionNormal        
     }      
 }
 
