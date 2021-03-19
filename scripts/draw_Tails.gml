@@ -253,7 +253,7 @@ if action == consPlayerActionJump && vsp > 0 && (collision_line(x,y,x,y+80,obj_w
         image_i = 1
     frame += 0.25
 }
-else if (action == consPlayerActionJump || action == consPlayerActionRoll || action == consPlayerActionSpinning3 || action == consPlayerActionAutoTunnel) //&& sprp != spr_Sonic_land
+else if (action == consPlayerActionJump || action == consPlayerActionRoll || action == consPlayerActionAutoTunnel) //&& sprp != spr_Sonic_land
 {
     frame += 1/max(2-(abs(hsp)),1);
     sprp = spr_Tails_spinjump;

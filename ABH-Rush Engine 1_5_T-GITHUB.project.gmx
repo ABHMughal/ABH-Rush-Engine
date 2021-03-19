@@ -1132,7 +1132,7 @@
     <room>rooms\rm_pause</room>
     <room>rooms\room7</room>
   </rooms>
-  <constants number="42">
+  <constants number="41">
     <constant name="consPlayerActionSkid">-4</constant>
     <constant name="consPlayerActionLookUp">-3</constant>
     <constant name="consPlayerActionSpindashCharge">-2</constant>
@@ -1140,7 +1140,6 @@
     <constant name="consPlayerActionNormal">0</constant>
     <constant name="consPlayerActionJump">1</constant>
     <constant name="consPlayerActionRoll">2</constant>
-    <constant name="consPlayerActionSpinning3">3</constant>
     <constant name="consPlayerActionHomingTarget">4</constant>
     <constant name="consPlayerActionHomingNoTarget">4.5</constant>
     <constant name="consPlayerActionSpringJump">5</constant>
