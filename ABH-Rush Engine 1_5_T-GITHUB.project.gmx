@@ -818,7 +818,6 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_Sonic</object>
-    <object>objects\obj_Tails</object>
     <objects name="Parents">
       <objects name="Walls">
         <object>objects\obj_walls</object>
@@ -1132,7 +1131,10 @@
     <room>rooms\rm_pause</room>
     <room>rooms\room7</room>
   </rooms>
-  <constants number="41">
+  <constants number="44">
+    <constant name="consPlayerNameSonic">"Sonic"</constant>
+    <constant name="consPlayerNameShadow">"Shadow"</constant>
+    <constant name="consPlayerNameTails">"Tails"</constant>
     <constant name="consPlayerActionSkid">-4</constant>
     <constant name="consPlayerActionLookUp">-3</constant>
     <constant name="consPlayerActionSpindashCharge">-2</constant>

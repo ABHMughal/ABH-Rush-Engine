@@ -4,10 +4,20 @@ if (action == consPlayerActionNormal || action == consPlayerActionJump) && !grou
     action = consPlayerActionStomp
     audio_play_sound(snd_stomp_start,1,false);
     instance_create(x,y,obj_stompfx);
-    if character == "Sonic"
-        audio_play_sound(snd_SonicAttack3,1,false);
-    else if character == "Shadow"
-        audio_play_sound(snd_Shadow_Homing2,1,false);
+    switch(character)
+    {
+        case consPlayerNameSonic:
+        {
+            audio_play_sound(snd_SonicAttack3,1,false);
+        }
+        break;
+        
+        case consPlayerNameShadow:
+        {
+            audio_play_sound(snd_Shadow_Homing2,1,false);
+        }
+        break;
+    }
 }
 if action == consPlayerActionStomp
 {

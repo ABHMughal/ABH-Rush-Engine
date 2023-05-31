@@ -104,21 +104,21 @@ sound = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ((other.character == "Sonic" &amp;&amp; (other.sprp == spr_Sonic_spinjump || other.sprp == spr_SuperSonic_spinjump)) || (other.character == "Shadow" &amp;&amp; (other.sprp == spr_Shadow_spinjump || other.sprp == spr_SuperShadow_spinjump))) &amp;&amp; !other.ground &amp;&amp; !instance_exists(obj_boostfx)
+            <string>if ((other.character == consPlayerNameSonic &amp;&amp; (other.sprp == spr_Sonic_spinjump || other.sprp == spr_SuperSonic_spinjump)) || (other.character == consPlayerNameShadow &amp;&amp; (other.sprp == spr_Shadow_spinjump || other.sprp == spr_SuperShadow_spinjump))) &amp;&amp; !other.ground &amp;&amp; !instance_exists(obj_boostfx)
 {
     if other.action == consPlayerActionHomingTarget
     {
         other.image_i = 0
         other.action = consPlayerActionTrick
         
-        if other.character == "Sonic"
+        if other.character == consPlayerNameSonic
         {
             if !other.super
                 other.sprp = choose(spr_Sonic_trick1,spr_Sonic_trick2,spr_Sonic_trick3)
             else
                 other.sprp = choose(spr_SuperSonic_trick1,spr_SuperSonic_trick2,spr_SuperSonic_trick3)
         }
-        else if other.character == "Shadow"
+        else if other.character == consPlayerNameShadow
         {
             if !other.super
                 other.sprp = spr_Shadow_jump
@@ -135,9 +135,9 @@ sound = 0
         alarm[0] = 30
         
         
-        if other.character == "Sonic"
+        if other.character == consPlayerNameSonic
             audio_play_sound(choose(snd_SonicAttack1,snd_SonicAttack2,snd_SonicAttack3),1,false)
-        else if other.character == "Shadow"
+        else if other.character == consPlayerNameShadow
             audio_play_sound(choose(snd_Shadow_Homing1,snd_Shadow_Homing2,snd_Shadow_Homing3),1,false)
     
     }

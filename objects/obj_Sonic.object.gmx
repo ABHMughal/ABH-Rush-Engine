@@ -28,7 +28,7 @@
             <string>
 mask = 16
 
-character = "Sonic"
+character = consPlayerNameTails
 if variable_global_exists("curr_character")
     character = global.curr_character
 super = false
@@ -163,6 +163,32 @@ input_mode = 0  //0 means keyboard and 1 mean xbox controller
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if character == consPlayerNameTails {
+    image_i = 0
+    action = consPlayerActionHomingNoTarget
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="2">
       <action>
         <libid>1</libid>
@@ -252,22 +278,61 @@ canWallJump = false
           <argument>
             <kind>1</kind>
             <string>//draw_self()
-if super == false
+switch(super)
 {
-    if character == "Sonic"
-        draw_Sonic()
-    else if character == "Shadow"
-        draw_Shadow()
-}
-else
-{
-    if character == "Sonic"
-        draw_SuperSonic()
-    else if character == "Shadow"
-        draw_SuperShadow()
+    case false:
+    {
+        switch(character)
+        {
+            case consPlayerNameSonic:
+            {
+                draw_Sonic();
+            }
+            break;
+            
+            case consPlayerNameShadow:
+            {
+                draw_Shadow();
+            }
+            break;
+            
+            case consPlayerNameTails:
+            {
+                draw_Tails();
+            }
+            break;
+        }
+    }
+    break;
+    
+    case true:
+    {
+        switch(character)
+        {
+            case consPlayerNameSonic:
+            {
+                draw_SuperSonic();
+            }
+            break;
+            
+            case consPlayerNameShadow:
+            {
+                draw_SuperShadow();
+            }
+            break;
+            
+            case consPlayerNameTails:
+            {
+                draw_Tails();
+            }
+            break;
+        }
+    }
+    break;
 }
 
 boost_direction = point_direction(x_begin,y_begin,x,y)
+tail_direction = point_direction(x_begin,y_begin,x,y)
 </string>
           </argument>
         </arguments>
@@ -353,10 +418,20 @@ if keyboard_check_pressed(ord('R'))
 
 if !canMove
 {
-    if character == "Sonic"
-        sprp = spr_Sonic_stand
-    else if character == "Shadow"
-        sprp = spr_Shadow_stand
+    switch(character)
+    {
+        case consPlayerNameSonic:
+        {
+            sprp = spr_Sonic_stand
+        }
+        break;
+        
+        case consPlayerNameShadow:
+        {
+            sprp = spr_Shadow_stand
+        }
+        break;
+    }
     exit
 }
 //check input
@@ -386,7 +461,7 @@ if alarm2 &gt; 0
     if alarm2 == 1 &amp;&amp; action == consPlayerActionHomingNoTarget
     {
         action = consPlayerActionNormal
-        if character == "Sonic"
+        if character == consPlayerNameSonic
             hsp = 0
         vsp = 0
         grv = 0.21875;
@@ -441,7 +516,7 @@ else
 
     
 //making trail
-if instance_exists(obj_boostfx) || (character == "Shadow" &amp;&amp; (action == consPlayerActionHomingNoTarget)) || super
+if instance_exists(obj_boostfx) || (character == consPlayerNameShadow &amp;&amp; (action == consPlayerActionHomingNoTarget)) || super
 {
     step += 1
     if step &gt;= 7
@@ -519,7 +594,7 @@ p_physics()
 
 if !stageClear
 {
-    if character != "Tails"
+    if character != consPlayerNameTails
         p_move_Sonic()
     else
         p_move_Tails()
@@ -705,6 +780,9 @@ else
 }
 */
 
+if character == consPlayerNameTails &amp;&amp; sprp == spr_Tails_spinjump
+    draw_sprite_ext(spr_Tails_tails,image_i,x,y,1,xdir,tail_direction,c_white,1)
+
 //this section fixes Sonic being colliding a little inside of the wall surface, while drawing the sprites
 var _wall = 0 
 var _bbox_top = 0
@@ -740,6 +818,11 @@ else if acos == -1 &amp;&amp; ground
 else
     draw_sprite_ext(sprp,image_i,x,y,xdir,1,i_angle,c_white,image_alpha);
     
+if character == consPlayerNameTails &amp;&amp; action == consPlayerActionHomingTarget
+{
+    draw_circular_bar(x + xdir*18, y - 15, 100, 100, c_black, 5, 1, 3)
+    draw_circular_bar(x + xdir*18, y - 15, alarm_get(3)/480 * 100, 100, c_lime, 5, 1, 3)
+}
 </string>
           </argument>
         </arguments>

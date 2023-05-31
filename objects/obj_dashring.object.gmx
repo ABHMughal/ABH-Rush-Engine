@@ -60,86 +60,6 @@ alarm_amount = 30
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_Tails">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if activate &amp;&amp; other.action != consPlayerActionDead
-{
-    activate = false;
-    if image_angle == 0 || image_angle == 180
-    {    
-        other.grv = 0
-        other.alarm0 = alarm_amount
-        other.action = consPlayerActionDashRing    
-    }
-    else
-    {
-        other.action = consPlayerActionSpringJump
-        other.image_i = 0
-        if other.character == "Tails"
-        {
-            if image_angle == 45 || image_angle == 135
-            {   
-                other.sprp = spr_Tails_corkscrew
-            }
-            else if (image_angle &gt; 0 &amp;&amp; image_angle &lt; 45) || (image_angle &lt; 180 &amp;&amp; image_angle &gt; 135)
-            {
-                other.sprp = spr_Tails_walljump
-            }
-            else
-            {
-                if image_angle &lt; 0 &amp;&amp; image_angle &gt; -180
-                {
-                    other.image_i = 9
-                    other.action = consPlayerActionNormal
-                }
-                other.sprp = spr_Tails_jump
-            }
-        }
-        
-        
-        
-        //part_type_direction(global.Particle18,point_direction(self.x,self.y,self.x+cos(degtorad(self.image_angle))*5,self.y+sin(degtorad(self.image_angle))*5),360,0,0)
-        //part_particles_create(global.Particle18,x,y,global.Particle18,1);
-    }
-    other.ground = false
-        other.x = x
-        other.y = y
-        other.ground = false
-        other.hsp = cos(degtorad(image_angle))*force_power
-        other.vsp = -sin(degtorad(image_angle))*force_power
-        if image_angle &lt; 90 &amp;&amp; (image_angle &gt; 270 || image_angle &gt; -90)
-            other.xdir = 1
-        else if image_angle &gt; 90 &amp;&amp; (image_angle &lt; 270 || image_angle &lt; -90)
-            other.xdir = -1
-        if audio_is_playing(snd_dashring)
-            audio_stop_sound(snd_dashring)
-        audio_play_sound(snd_dashring,1,false);
-        
-        effect = instance_create(x,y,obj_dashring_activate)
-        effect.image_angle = image_angle
-        
-        draw_effect(spr_dashring_fx, 0, 1, 1, true)   
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_Sonic">
       <action>
         <libid>1</libid>
@@ -169,7 +89,7 @@ alarm_amount = 30
     else
     {
         other.action = consPlayerActionSpringJump
-        if obj_Sonic.character == "Sonic"
+        if other.character == "Sonic"
         {
             if image_angle == 45 || image_angle == 135
             {   
@@ -194,7 +114,7 @@ alarm_amount = 30
                     other.sprp = spr_Sonic_jump
             }
         }
-        else if obj_Sonic.character == "Shadow"
+        else if other.character == "Shadow"
         {
             if image_angle == 45 || image_angle == 135
             {   
@@ -219,6 +139,27 @@ alarm_amount = 30
                 other.sprp = spr_Shadow_jump
                 if image_angle &lt;= -45 &amp;&amp; image_angle &gt;= -135
                     other.image_i = 10
+            }
+        }
+        else if other.character == "Tails"
+        {
+            other.image_i = 0
+            if image_angle == 45 || image_angle == 135
+            {   
+                other.sprp = spr_Tails_corkscrew
+            }
+            else if (image_angle &gt; 0 &amp;&amp; image_angle &lt; 45) || (image_angle &lt; 180 &amp;&amp; image_angle &gt; 135)
+            {
+                other.sprp = spr_Tails_walljump
+            }
+            else
+            {
+                if image_angle &lt; 0 &amp;&amp; image_angle &gt; -180
+                {
+                    other.image_i = 9
+                    other.action = consPlayerActionNormal
+                }
+                other.sprp = spr_Tails_jump
             }
         }
     }

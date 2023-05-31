@@ -70,9 +70,9 @@ time -= 1
         audio_play_sound(snd_qte_success,1,false)
         instance_create(x,y,obj_qte_success)
         
-        if obj_Sonic.character == "Sonic"
+        if obj_Sonic.character == consPlayerNameSonic
             audio_play_sound(snd_SonicQTE,1,false)
-        else if obj_Sonic.character == "Shadow"
+        else if obj_Sonic.character == consPlayerNameShadow
             audio_play_sound(snd_ShadowQTE,1,false)
     }
     audio_play_sound(snd_qte_button_ok,1,false)

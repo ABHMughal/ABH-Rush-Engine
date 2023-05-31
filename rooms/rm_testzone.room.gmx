@@ -108,9 +108,9 @@
     <instance objName="obj_dashring" x="2336" y="464" name="inst_16E5783E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dashpad" x="2752" y="720" name="inst_A58A6F5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_dashramp" x="304" y="672" name="inst_751D2163" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Tails" x="816" y="672" name="inst_0218AFAF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_eggspinner" x="3200" y="592" name="inst_3F5858D1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pit" x="5344" y="1048" name="inst_4C2A6BB2" locked="0" code="" scaleX="30" scaleY="1.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Sonic" x="816" y="672" name="inst_BBDDA424" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="ts_SunsetHill" x="2688" y="784" w="96" h="96" xo="1248" yo="1824" id="10004032" name="inst_DFDC1DFC" depth="20" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

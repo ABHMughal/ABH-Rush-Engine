@@ -100,9 +100,9 @@ if !selected &amp;&amp; image_alpha &gt;= 1
     if keyboard_check_pressed(vk_enter) || gamepad_button_check(0,gp_start) || gamepad_button_check(0,gp_face1) || keyboard_check_pressed(ord('S'))
     {
         if image_index == 0
-            global.curr_character = "Sonic"
+            global.curr_character = consPlayerNameSonic
         else
-            global.curr_character = "Shadow"
+            global.curr_character = consPlayerNameShadow
             
         audio_play_sound(snd_menuconfirm,1,false)          
         alarm[0] = 120
