@@ -133,7 +133,7 @@ global.enemies += 100
             <kind>1</kind>
             <string>if other.character != consPlayerNameTails
 {
-    if (other.action == consPlayerActionJump || other.action == consPlayerActionSpindashCharge || other.action == consPlayerActionHomingTarget || other.action == consPlayerActionHomingNoTarget || other.action == consPlayerActionSwingBarJump ) &amp;&amp; !other.ground &amp;&amp; !instance_exists(obj_boostfx) //((other.character == "Sonic" &amp;&amp; (other.sprp == spr_Sonic_spinjump || other.sprp == spr_SuperSonic_spinjump || other.sprp == spr_Sonic_land || other.sprp == spr_SuperSonic_land)) || (other.character == "Shadow" &amp;&amp; (other.sprp == spr_Shadow_spinjump || other.sprp == spr_SuperShadow_spinjump || other.sprp == spr_Shadow_land || other.sprp == spr_SuperShadow_land))) 
+    if (other.action == consPlayerActionJump || other.action == consPlayerActionSpindashCharge || other.action == consPlayerActionHomingTarget || other.action == consPlayerActionHomingNoTarget || other.action == consPlayerActionSwingBarJump ) &amp;&amp; !other.ground &amp;&amp; !instance_exists(obj_boostfx) //((other.character == consPlayerNameSonic &amp;&amp; (other.sprp == spr_Sonic_spinjump || other.sprp == spr_SuperSonic_spinjump || other.sprp == spr_Sonic_land || other.sprp == spr_SuperSonic_land)) || (other.character == consPlayerNameShadow &amp;&amp; (other.sprp == spr_Shadow_spinjump || other.sprp == spr_SuperShadow_spinjump || other.sprp == spr_Shadow_land || other.sprp == spr_SuperShadow_land))) 
     {
         if other.action == consPlayerActionHomingTarget
         {

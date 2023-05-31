@@ -64,9 +64,9 @@
     {
         other.super = false
         touched = true
-        if other.character == "Sonic"
+        if other.character == consPlayerNameSonic
             audio_play_sound(snd_SonicDie,1,false)
-        else if other.character == "Shadow"
+        else if other.character == consPlayerNameShadow
             audio_play_sound(snd_Shadow_Die,1,false)
     
     }

@@ -103,9 +103,9 @@ else
     instance_create(x,y,obj_qte_fail)
     obj_Sonic.grv = 0.21875;
     obj_Sonic.image_i = 0
-    if obj_Sonic.character == "Sonic"
+    if obj_Sonic.character == consPlayerNameSonic
         audio_play_sound(snd_SonicQTE,1,false)
-    else if obj_Sonic.character == "Shadow"
+    else if obj_Sonic.character == consPlayerNameShadow
         audio_play_sound(snd_ShadowQTE,1,false)
 }
 with(button1)

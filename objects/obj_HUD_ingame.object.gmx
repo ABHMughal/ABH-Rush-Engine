@@ -103,7 +103,7 @@ y_ringoffset = view_yview[0]+45
 
 
 
-if obj_Sonic.character == "Sonic"
+if other.character == consPlayerNameSonic
 {
     boost_gauge = spr_boostgauge
     ring = spr_ring_amount
@@ -111,7 +111,7 @@ if obj_Sonic.character == "Sonic"
     time = spr_time_amount
     number = spr_hud_numbers
 }
-else if obj_Sonic.character == "Shadow"
+else if other.character == consPlayerNameShadow
 {
     boost_gauge = spr_boostgauge_shadow
     ring = spr_ring_amount_shadow
@@ -119,7 +119,7 @@ else if obj_Sonic.character == "Shadow"
     time = spr_time_amount_shadow
     number = spr_hud_numbers_shadow
 }
-else if obj_Sonic.character == "Tails"
+else if other.character == consPlayerNameTails
 {
     boost_gauge = spr_boostgauge
     ring = spr_ring_amount
@@ -160,12 +160,15 @@ else if obj_Sonic.character == "Tails"
     draw_sprite_ext(ring,0,x_ringoffset,y_ringoffset,1,1,0,c_white,1)
     draw_sprite_number(x_ringoffset+30,y_ringoffset+2,obj_stagestat_controller.rings,number,1)
     
-    draw_sprite_ext(boost_gauge,0,x_boostoffset,y_boostoffset,1,1,0,c_white,1)
-    if obj_Sonic.boostamount &gt; 0
+    if other.character != consPlayerNameTails
     {
-        draw_line_colour(x_boostoffset+7,y_boostoffset+11,x_boostoffset+7+(1.4*obj_Sonic.boostamount),y_boostoffset+11,c_green,c_green)
-        draw_line_colour(x_boostoffset+8,y_boostoffset+12,x_boostoffset+8+(1.4*obj_Sonic.boostamount),y_boostoffset+12,c_lime,c_lime)
-
+        draw_sprite_ext(boost_gauge,0,x_boostoffset,y_boostoffset,1,1,0,c_white,1)
+        if other.boostamount &gt; 0
+        {
+            draw_line_colour(x_boostoffset+7,y_boostoffset+11,x_boostoffset+7+(1.4*obj_Sonic.boostamount),y_boostoffset+11,c_green,c_green)
+            draw_line_colour(x_boostoffset+8,y_boostoffset+12,x_boostoffset+8+(1.4*obj_Sonic.boostamount),y_boostoffset+12,c_lime,c_lime)
+    
+        }
     }
 }
 </string>

@@ -377,7 +377,7 @@ else
         {
             if character == consPlayerNameSonic
                 audio_play_sound(snd_homing,1,false);
-            else if character == "Shadow"
+            else if character == consPlayerNameShadow
                 audio_play_sound(snd_Shadow_Warp,1,false);
         }
         action = consPlayerActionHomingNoTarget
@@ -480,7 +480,7 @@ if character == consPlayerNameSonic
             action = consPlayerActionRoll        
     }
 }
-else if character == "Shadow"
+else if character == consPlayerNameShadow
 {
     if ground && action == consPlayerActionNormal && key_attack_p
     {
@@ -645,7 +645,7 @@ if (action == consPlayerActionNormal || action == consPlayerActionJump) && !grou
     instance_create(x,y,obj_stompfx);
     if character == consPlayerNameSonic
         audio_play_sound(snd_SonicAttack3,1,false);
-    else if character == "Shadow"
+    else if character == consPlayerNameShadow
         audio_play_sound(snd_Shadow_Homing2,1,false);
 }
 if action == consPlayerActionStomp
@@ -859,7 +859,7 @@ if action == consPlayerActionPulley
 
 //shadow chaos
 /*
-if character == "Shadow"
+if character == consPlayerNameShadow
 {
     if key_special && action == consPlayerActionJump && !ground && abs(hsp) <= 2 && boostamount >= 25
     {

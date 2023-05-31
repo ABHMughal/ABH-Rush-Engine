@@ -214,12 +214,12 @@ var index = 0
 var colour = make_colour_rgb(0,90,225)
 if instance_exists(obj_Sonic)
 {
-    if obj_Sonic.character == "Shadow"
+    if obj_Sonic.character == consPlayerNameShadow
     {
         index = 1
         colour = make_colour_rgb(128,0,0)
     }
-    if obj_Sonic.character == "Tails"
+    if obj_Sonic.character == consPlayerNameTails
     {
         index = 2
         colour = make_colour_rgb(248,184,32)

@@ -1,5 +1,5 @@
 //Tails tail attack
-if character == "Tails"
+if character == consPlayerNameTails
 {
     if action == consPlayerActionNormal && key_attack_p && ground
     {

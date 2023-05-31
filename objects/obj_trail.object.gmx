@@ -31,9 +31,9 @@ sprite_index = obj_Sonic.sprp
 /*
 if !obj_Sonic.super
 {
-    if obj_Sonic.character == "Sonic"
+    if obj_Sonic.character == consPlayerNameSonic
         image_blend = c_aqua
-    else if obj_Sonic.character == "Shadow"   
+    else if obj_Sonic.character == consPlayerNameShadow   
         image_blend = c_yellow
 }
 else

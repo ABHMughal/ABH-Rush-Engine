@@ -53,10 +53,10 @@ audio_play_sound(snd_spin,1,false);
             <kind>1</kind>
             <string>if !obj_Sonic.super
 {
-    if obj_Sonic.character == "Sonic"
+    if obj_Sonic.character == consPlayerNameSonic
         sprite_index = spr_jumpfx
     
-    else if obj_Sonic.character == "Shadow"
+    else if obj_Sonic.character == consPlayerNameShadow
         sprite_index = spr_jumpfx_shadow
 }
 else

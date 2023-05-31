@@ -399,10 +399,10 @@ y_begin = y
             <string>/*
 if keyboard_check_pressed(ord('Y'))
 {
-    if character == "Sonic"
-        character = "Shadow"
+    if character == consPlayerNameSonic
+        character = consPlayerNameShadow
     else 
-        character = "Sonic"
+        character = consPlayerNameSonic
 }
 if keyboard_check_pressed(ord('U'))
 {
@@ -694,14 +694,14 @@ if ground
     }
 }
 
-if character == "Shadow" &amp;&amp; (sprp == spr_Shadow_skate || sprp == spr_SuperShadow_skate || sprp == spr_Shadow_skate_fast) 
+if character == consPlayerNameShadow &amp;&amp; (sprp == spr_Shadow_skate || sprp == spr_SuperShadow_skate || sprp == spr_Shadow_skate_fast) 
 {
     snd_footstep1 = snd_jetboots_R
     snd_footstep2 = snd_jetboots_L
 }
 
 
-if action == consPlayerActionNormal &amp;&amp; sprp != spr_Sonic_stand &amp;&amp; sprp != spr_Shadow_stand &amp;&amp; sprp != spr_SuperSonic_stand &amp;&amp; sprp != spr_SuperSonic_fly &amp;&amp; sprp != spr_SuperShadow_stand &amp;&amp; sprp != spr_SuperShadow_fly &amp;&amp; ground &amp;&amp; !stageClear &amp;&amp; sprp != spr_Tails_sprint &amp;&amp; !(character == "Shadow" &amp;&amp; (sprp == spr_Shadow_skate_fast || sprp == spr_Shadow_skate || sprp == spr_Shadow_fly))
+if action == consPlayerActionNormal &amp;&amp; sprp != spr_Sonic_stand &amp;&amp; sprp != spr_Shadow_stand &amp;&amp; sprp != spr_SuperSonic_stand &amp;&amp; sprp != spr_SuperSonic_fly &amp;&amp; sprp != spr_SuperShadow_stand &amp;&amp; sprp != spr_SuperShadow_fly &amp;&amp; ground &amp;&amp; !stageClear &amp;&amp; sprp != spr_Tails_sprint &amp;&amp; !(character == consPlayerNameShadow &amp;&amp; (sprp == spr_Shadow_skate_fast || sprp == spr_Shadow_skate || sprp == spr_Shadow_fly))
 {
     if (image_i == 3 || image_i == 7 ) &amp;&amp; !footstep
     {
@@ -711,7 +711,7 @@ if action == consPlayerActionNormal &amp;&amp; sprp != spr_Sonic_stand &amp;&amp
     else if image_i != 3 &amp;&amp; image_i != 7
         footstep = false
 }
-else if (character == "Shadow" &amp;&amp; (sprp == spr_Shadow_skate)) 
+else if (character == consPlayerNameShadow &amp;&amp; (sprp == spr_Shadow_skate)) 
 {
     if (image_i == 0 || image_i == 14) &amp;&amp; !footstep
     {
@@ -721,7 +721,7 @@ else if (character == "Shadow" &amp;&amp; (sprp == spr_Shadow_skate))
     else if image_i != 7 &amp;&amp; image_i != 21
         footstep = false
 }
-else if (character == "Shadow" &amp;&amp; sprp == spr_Shadow_skate_fast)
+else if (character == consPlayerNameShadow &amp;&amp; sprp == spr_Shadow_skate_fast)
 {
     if (image_i == 4 || image_i == 21) &amp;&amp; !footstep
     {
@@ -766,16 +766,16 @@ if hitInvincible &gt; 0
 /*
 if super == false
 {
-    if character == "Sonic"
+    if character == consPlayerNameSonic
         draw_Sonic()
-    else if character == "Shadow"
+    else if character == consPlayerNameShadow
         draw_Shadow()
 }
 else
 {
-    if character == "Sonic"
+    if character == consPlayerNameSonic
         draw_SuperSonic()
-    else if character == "Shadow"
+    else if character == consPlayerNameShadow
         draw_SuperShadow()
 }
 */

@@ -89,7 +89,7 @@ alarm_amount = 30
     else
     {
         other.action = consPlayerActionSpringJump
-        if other.character == "Sonic"
+        if other.character == consPlayerNameSonic
         {
             if image_angle == 45 || image_angle == 135
             {   
@@ -114,7 +114,7 @@ alarm_amount = 30
                     other.sprp = spr_Sonic_jump
             }
         }
-        else if other.character == "Shadow"
+        else if other.character == consPlayerNameShadow
         {
             if image_angle == 45 || image_angle == 135
             {   
@@ -141,7 +141,7 @@ alarm_amount = 30
                     other.image_i = 10
             }
         }
-        else if other.character == "Tails"
+        else if other.character == consPlayerNameTails
         {
             other.image_i = 0
             if image_angle == 45 || image_angle == 135

@@ -122,9 +122,9 @@ done = false
     else 
         message.image_index = 0
         
-    if obj_Sonic.character == "Sonic"
+    if obj_Sonic.character == consPlayerNameSonic
             audio_play_sound(snd_SonicQTE,1,false)
-    else if obj_Sonic.character == "Shadow"
+    else if obj_Sonic.character == consPlayerNameShadow
             audio_play_sound(snd_ShadowQTE,1,false)
 }
 else
