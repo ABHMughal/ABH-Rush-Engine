@@ -70,9 +70,9 @@ limit_end2 = 34
     obj_Sonic.image_i = 0
     audio_play_sound(snd_qte_success,1,false)
     
-    if obj_Sonic.character == "Sonic"
+    if other.character == consPlayerNameSonic
             audio_play_sound(snd_SonicQTE,1,false)
-        else if obj_Sonic.character == "Shadow"
+        else if other.character == consPlayerNameShadow
             audio_play_sound(snd_ShadowQTE,1,false)
     
     message = instance_create(x,y,obj_qte_success)

@@ -56,9 +56,9 @@ audio_play_sound(snd_boost_start,1,false)
 audio_play_sound(snd_boost_continue,1,false)
 audio_play_sound(snd_boost_loop,1,true)
 
-if obj_Sonic.character == "Sonic"
+if obj_Sonic.character == consPlayerNameSonic
     audio_play_sound(choose(snd_SonicGo,snd_SonicBoost1,snd_SonicBoost2),1,false)
-else if obj_Sonic.character == "Shadow"
+else if obj_Sonic.character == consPlayerNameShadow
     audio_play_sound(choose(snd_Shadow_Boost1,snd_Shadow_Boost2,snd_Shadow_Boost3),1,false)
     
 vibrate_xbox_controller(30)
@@ -115,9 +115,9 @@ obj_Sonic.boosting = false
 {
     if !obj_Sonic.super
     {
-        if obj_Sonic.character == "Sonic"
+        if obj_Sonic.character == consPlayerNameSonic
             sprite_index = spr_boost
-        else if obj_Sonic.character == "Shadow"
+        else if obj_Sonic.character == consPlayerNameShadow
             sprite_index = spr_boost_shadow
     }
     else

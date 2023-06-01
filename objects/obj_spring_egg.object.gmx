@@ -105,7 +105,7 @@ force_power = 8
     audio_play_sound(snd_spring,1,false)
     audio_play_sound(snd_spring_egg,1,false)
     
-     if obj_Sonic.character == "Sonic"
+     if other.character == consPlayerNameSonic
     {
         if image_angle == 45 || image_angle == 135
         {   
@@ -132,7 +132,7 @@ force_power = 8
                 other.sprp = spr_Sonic_jump
         }
     }
-    else if obj_Sonic.character == "Shadow"
+    else if other.character == consPlayerNameShadow
     {
         if image_angle == 45 || image_angle == 135
         {   

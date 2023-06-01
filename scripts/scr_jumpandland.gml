@@ -9,7 +9,7 @@ if key_jump && ground && (action == consPlayerActionSkid || action == consPlayer
     asin = 0;
     action = consPlayerActionJump;
     
-    if !instance_exists(obj_jumpfx) && character != "Tails"
+    if !instance_exists(obj_jumpfx) && character != consPlayerNameTails
         instance_create(x,y,obj_jumpfx)
     
     audio_play_sound(snd_jump,1,false);

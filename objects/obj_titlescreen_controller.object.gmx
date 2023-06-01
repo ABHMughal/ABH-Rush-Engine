@@ -121,9 +121,9 @@ else if state == 4
     if step_amount == 0
     {
         if character == 0
-            global.curr_character = "Sonic"
+            global.curr_character = consPlayerNameSonic
         else
-            global.curr_character = "Shadow"
+            global.curr_character = consPlayerNameShadow
         state = 5
     }       
 }

@@ -375,9 +375,9 @@ else
     {
         if action != consPlayerActionHomingNoTarget
         {
-            if character == "Sonic"
+            if character == consPlayerNameSonic
                 audio_play_sound(snd_homing,1,false);
-            else if character == "Shadow"
+            else if character == consPlayerNameShadow
                 audio_play_sound(snd_Shadow_Warp,1,false);
         }
         action = consPlayerActionHomingNoTarget
@@ -455,7 +455,7 @@ if action == consPlayerActionDashPad
 }
 
 //slide
-if character == "Sonic"
+if character == consPlayerNameSonic
 {
     if ground && action == consPlayerActionNormal && abs(hsp) >= 3 && key_attack
     {
@@ -480,7 +480,7 @@ if character == "Sonic"
             action = consPlayerActionRoll        
     }
 }
-else if character == "Shadow"
+else if character == consPlayerNameShadow
 {
     if ground && action == consPlayerActionNormal && key_attack_p
     {
@@ -643,9 +643,9 @@ if (action == consPlayerActionNormal || action == consPlayerActionJump) && !grou
     action = consPlayerActionStomp
     audio_play_sound(snd_stomp_start,1,false);
     instance_create(x,y,obj_stompfx);
-    if character == "Sonic"
+    if character == consPlayerNameSonic
         audio_play_sound(snd_SonicAttack3,1,false);
-    else if character == "Shadow"
+    else if character == consPlayerNameShadow
         audio_play_sound(snd_Shadow_Homing2,1,false);
 }
 if action == consPlayerActionStomp
@@ -859,7 +859,7 @@ if action == consPlayerActionPulley
 
 //shadow chaos
 /*
-if character == "Shadow"
+if character == consPlayerNameShadow
 {
     if key_special && action == consPlayerActionJump && !ground && abs(hsp) <= 2 && boostamount >= 25
     {

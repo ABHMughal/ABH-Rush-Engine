@@ -66,12 +66,12 @@ x_ring = 520
 x_enemy = 520
 
 
-if obj_Sonic.character == "Sonic"
+if obj_Sonic.character == consPlayerNameSonic
 {
     audio_play_sound(bgm_stageclear_Sonic,0,false)
     alarm[1] = 360
 }
-else if obj_Sonic.character == "Shadow"
+else if obj_Sonic.character == consPlayerNameShadow
 {
     audio_play_sound(bgm_stageclear_Shadow,0,false)
     alarm[1] = 420
@@ -393,7 +393,7 @@ if phase == 11
 var colour = make_colour_rgb(0,90,225)
 if instance_exists(obj_Sonic)
 {
-    if obj_Sonic.character == "Shadow"
+    if obj_Sonic.character == consPlayerNameShadow
     {
         index = 1
         colour = make_colour_rgb(128,0,0)

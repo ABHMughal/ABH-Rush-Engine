@@ -55,7 +55,7 @@ if ground
     }
 }
 
-if character == "Shadow" && (sprp == spr_Shadow_skate || sprp == spr_SuperShadow_skate || sprp == spr_Shadow_skate_fast) 
+if character == consPlayerNameShadow && (sprp == spr_Shadow_skate || sprp == spr_SuperShadow_skate || sprp == spr_Shadow_skate_fast) 
 {
     snd_footstep1 = snd_jetboots_R
     snd_footstep2 = snd_jetboots_L
@@ -72,7 +72,7 @@ if action == consPlayerActionNormal && sprp != spr_Sonic_stand && sprp != spr_Sh
     else if image_i != 3 && image_i != 7
         footstep = false
 }
-else if (character == "Shadow" && (sprp == spr_Shadow_skate)) 
+else if (character == consPlayerNameShadow && (sprp == spr_Shadow_skate)) 
 {
     if (image_i == 0 || image_i == 14) && !footstep
     {
@@ -82,7 +82,7 @@ else if (character == "Shadow" && (sprp == spr_Shadow_skate))
     else if image_i != 7 && image_i != 21
         footstep = false
 }
-else if (character == "Shadow" && sprp == spr_Shadow_skate_fast)
+else if (character == consPlayerNameShadow && sprp == spr_Shadow_skate_fast)
 {
     if (image_i == 4 || image_i == 21) && !footstep
     {

@@ -45,9 +45,9 @@ else
     {
         if action != consPlayerActionHomingNoTarget
         {
-            if character == "Sonic"
+            if character == consPlayerNameSonic
                 audio_play_sound(snd_homing,1,false);
-            else if character == "Shadow"
+            else if character == consPlayerNameShadow
                 audio_play_sound(snd_Shadow_Warp,1,false);
         }
         action = consPlayerActionHomingNoTarget

@@ -80,9 +80,9 @@ audio_play_sound(snd_button_trigger,1,false)
     audio_play_sound(snd_jumppanel_ok,1,false)
     if obj_Sonic.jumppanel == 5
     {
-        if obj_Sonic.character == "Sonic"
+        if obj_Sonic.character == consPlayerNameSonic
             audio_play_sound(snd_SonicQTE,1,false)
-        else if obj_Sonic.character == "Shadow"
+        else if obj_Sonic.character == consPlayerNameShadow
             audio_play_sound(snd_ShadowQTE,1,false)
     }
 }

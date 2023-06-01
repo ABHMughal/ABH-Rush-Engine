@@ -112,12 +112,12 @@ if phase == 3 &amp;&amp; image_alpha &gt; 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_Sonic.character == "Sonic"
+            <string>if obj_Sonic.character == consPlayerNameSonic
 {
     draw_sprite_ext(spr_checkpoint_background,0,view_xview[0] + 162, view_yview[0] + 60,1,1,0,c_white,image_alpha)
     draw_sprite_number(view_xview[0] + 192, view_yview[0] + 100, time_string, spr_hud_numbers,image_alpha)
 }
-else if obj_Sonic.character == "Shadow"
+else if obj_Sonic.character == consPlayerNameShadow
 {
     
     draw_sprite_ext(spr_checkpoint_background,1,view_xview[0] + 162, view_yview[0] + 60,1,1,0,c_white,image_alpha)

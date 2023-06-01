@@ -114,7 +114,7 @@ while(collision_script_left(mask))
 
 if !ground
 {
-    if character == "Tails" && (action == consPlayerActionHomingTarget || action == consPlayerActionHomingNoTarget)
+    if character == consPlayerNameTails && (action == consPlayerActionHomingTarget || action == consPlayerActionHomingNoTarget)
         vsp += 0.03125
     else 
         vsp += grv;

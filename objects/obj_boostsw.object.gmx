@@ -28,18 +28,18 @@
             <string>image_speed = 0.5
 
 
-if abs(obj_Sonic.hsp) &gt; 3
+if abs(other.hsp) &gt; 3
     image_angle = obj_boostfx.image_angle //obj_Sonic.angle
 else
 {
-    image_xscale = obj_Sonic.xdir
+    image_xscale = other.xdir
 }
 
-if !obj_Sonic.super
+if !other.super
 {
-    if obj_Sonic.character == "Sonic"
+    if other.character == consPlayerNameSonic
         sprite_index = spr_boostsw
-    else if obj_Sonic.character == "Shadow"
+    else if other.character == consPlayerNameShadow
         sprite_index = spr_boostsw_shadow
 }
 else

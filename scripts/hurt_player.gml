@@ -8,10 +8,20 @@ if other.rings > 0
     other.canHit = false
     other.hitInvincible = 240
     scatter_rings()
-    if other.character == "Sonic"
-        audio_play_sound(snd_SonicHurt,1,false)
-    else if other.character == "Shadow"
-        audio_play_sound(snd_Shadow_Die,1,false)
+    switch(other.character)
+    {
+        case consPlayerNameSonic:
+        {
+            audio_play_sound(snd_SonicHurt,1,false)
+        }
+        break;
+        
+        case consPlayerNameShadow:
+        {
+            audio_play_sound(snd_Shadow_Die,1,false)
+        }
+        break;
+    }
 }
 else
 {
